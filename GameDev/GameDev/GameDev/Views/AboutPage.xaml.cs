@@ -11,6 +11,12 @@ namespace GameDev.Views
         public AboutPage()
         {
             InitializeComponent();
+            DateTimeLabel = DateTime.Now;
+
+            BindingContext = this;
         }
+
+        public static DateTime Now { get; }
+        public DateTime DateTimeLabel { get; private set; }
     }
 }

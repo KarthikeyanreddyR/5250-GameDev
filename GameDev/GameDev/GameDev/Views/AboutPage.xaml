@@ -47,7 +47,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="15th Jan 2019 / 9:30 PM " FontAttributes="Bold" />
+                                <Span Text="{Binding DateTimeLabel, StringFormat='{0:MMMM d, yyyy HH:mm}'}" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
