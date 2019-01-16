@@ -25,12 +25,12 @@ namespace GameDev.Views
 
         async void OnCharactersClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new ItemsPage());
+            await Navigation.PushAsync(new Characters());
         }
 
         async void OnHistoryScoreClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new ItemsPage());
+            await Navigation.PushAsync(new HistoryScore());
         }
     }
 }
