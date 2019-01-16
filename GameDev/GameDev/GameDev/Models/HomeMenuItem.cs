@@ -8,7 +8,7 @@ namespace GameDev.Models
     {
         Browse,
         About,
-        Item
+        Main_Page
     }
     public class HomeMenuItem
     {

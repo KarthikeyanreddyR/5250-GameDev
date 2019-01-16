@@ -15,6 +15,22 @@ namespace GameDev.Views
 		public NewMainPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+            Title = "Main Page";
+        }
+
+        async void OnItemsClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ItemsPage());
+        }
+
+        async void OnCharactersClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ItemsPage());
+        }
+
+        async void OnHistoryScoreClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ItemsPage());
+        }
+    }
 }

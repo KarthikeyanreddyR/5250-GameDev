@@ -32,7 +32,7 @@ namespace GameDev.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
-                    case (int)MenuItemType.Item:
+                    case (int)MenuItemType.Main_Page:
                         MenuPages.Add(id, new NavigationPage(new NewMainPage()));
                         break;
                 }
