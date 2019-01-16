@@ -7,7 +7,8 @@ namespace GameDev.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        Item
     }
     public class HomeMenuItem
     {

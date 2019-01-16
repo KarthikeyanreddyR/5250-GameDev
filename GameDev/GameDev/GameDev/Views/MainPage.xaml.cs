@@ -17,7 +17,7 @@ namespace GameDev.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.About, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -31,6 +31,9 @@ namespace GameDev.Views
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        break;
+                    case (int)MenuItemType.Item:
+                        MenuPages.Add(id, new NavigationPage(new NewMainPage()));
                         break;
                 }
             }
