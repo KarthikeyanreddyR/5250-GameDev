@@ -26,14 +26,11 @@ namespace GameDev.Views
             {
                 switch (id)
                 {
-                    /*case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;*/
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
-                    case (int)MenuItemType.Main_Page:
-                        MenuPages.Add(id, new NavigationPage(new NewMainPage()));
+                    case (int)MenuItemType.Manage:
+                        MenuPages.Add(id, new NavigationPage(new ManagePage()));
                         break;
                 }
             }

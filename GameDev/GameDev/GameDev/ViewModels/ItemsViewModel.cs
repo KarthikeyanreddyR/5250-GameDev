@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using GameDev.Models;
-using GameDev.Views;
+using GameDev.Views.Items;
 
 namespace GameDev.ViewModels
 {

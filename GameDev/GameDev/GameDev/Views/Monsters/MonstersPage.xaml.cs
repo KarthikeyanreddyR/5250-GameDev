@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GameDev.Views
+namespace GameDev.Views.Monsters
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Characters : ContentPage
+	public partial class MonstersPage : ContentPage
 	{
-		public Characters ()
+		public MonstersPage ()
 		{
 			InitializeComponent ();
-            Title = "Characters";
 		}
 	}
 }

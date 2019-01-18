@@ -8,10 +8,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using GameDev.Models;
-using GameDev.Views;
+using GameDev.Views.Items;
 using GameDev.ViewModels;
 
-namespace GameDev.Views
+namespace GameDev.Views.Items
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPage : ContentPage
@@ -27,8 +27,7 @@ namespace GameDev.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
+            if (!(args.SelectedItem is Item item))
                 return;
 
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));

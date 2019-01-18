@@ -6,7 +6,7 @@ using Xamarin.Forms.Xaml;
 using GameDev.Models;
 using GameDev.ViewModels;
 
-namespace GameDev.Views
+namespace GameDev.Views.Items
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDetailPage : ContentPage

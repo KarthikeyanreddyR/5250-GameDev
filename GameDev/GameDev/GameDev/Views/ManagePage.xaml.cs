@@ -7,15 +7,19 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using GameDev.Views.Characters;
+using GameDev.Views.Score;
+using GameDev.Views.Items;
+
 namespace GameDev.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewMainPage : ContentPage
+	public partial class ManagePage : ContentPage
 	{
-		public NewMainPage ()
+		public ManagePage ()
 		{
 			InitializeComponent ();
-            Title = "Main Page";
+            Title = "Manage";
         }
 
         async void OnItemsClicked(object sender, EventArgs args)
@@ -25,12 +29,12 @@ namespace GameDev.Views
 
         async void OnCharactersClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new Characters());
+            await Navigation.PushAsync(new CharactersPage());
         }
 
         async void OnHistoryScoreClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new HistoryScore());
+            await Navigation.PushAsync(new ScoresPage());
         }
     }
 }

@@ -18,9 +18,8 @@ namespace GameDev.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                //new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Main_Page, Title="Main Page" }
+                new HomeMenuItem {Id = MenuItemType.Manage, Title="Manage" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

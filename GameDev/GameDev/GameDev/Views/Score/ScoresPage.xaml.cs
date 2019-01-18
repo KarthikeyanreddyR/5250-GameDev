@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GameDev.Views
+namespace GameDev.Views.Score
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HistoryScore : ContentPage
+	public partial class ScoresPage : ContentPage
 	{
-		public HistoryScore ()
+		public ScoresPage ()
 		{
 			InitializeComponent ();
-            Title = "History/Score";
+            Title = "Scores";
 		}
 	}
 }
