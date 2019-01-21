@@ -22,7 +22,7 @@ namespace GameDev.Views.Items
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = ItemsViewModel.Instance;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -45,7 +45,7 @@ namespace GameDev.Views.Items
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            //if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
     }
