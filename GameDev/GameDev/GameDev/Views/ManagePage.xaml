@@ -1,33 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.ManagePage">
-    <ContentPage.Content>
-        <Grid>
-            <ScrollView Grid.Row="0" Orientation="Both" Padding="50, 100">
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout WidthRequest="150" HeightRequest="150" Margin="0, 0, 40, 0">
-                        <Image Source="joystick.png" ></Image>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="App Name : "></Span>
-                                        <Span Text="GameDev" FontAttributes="Bold"></Span>
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <StackLayout Orientation="Horizontal" Margin="0, 40, 0, 0">
-                            <Button Text="Items" Clicked="OnItemsClicked"></Button>
-                            <Button Text="Characters" Clicked="OnCharactersClicked"></Button>
-                            <Button Text="Scores" Clicked="OnHistoryScoreClicked"></Button>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-            </ScrollView>
-        </Grid>
-    </ContentPage.Content>
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views.Items="clr-namespace:GameDev.Views.Items"
+            xmlns:views.Characters="clr-namespace:GameDev.Views.Characters"
+            xmlns:views.Monsters="clr-namespace:GameDev.Views.Monsters"
+            xmlns:views.Score="clr-namespace:GameDev.Views.Score"
+            x:Class="GameDev.Views.ManagePage" Padding="0, 0, 0, 0">
+    <TabbedPage.Children>
+        <NavigationPage Title="Items">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views.Items:ItemsPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Characters">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views.Characters:CharactersPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Monsters">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views.Monsters:MonstersPage />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Scores">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views.Score:ScoresPage />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+</TabbedPage>
