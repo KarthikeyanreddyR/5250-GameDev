@@ -58,13 +58,13 @@ namespace GameDev.Models
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
-            Description = newData.Description;
+            Description = newData.Description;            
+            ImageURI = newData.ImageURI;
+
             Value = newData.Value;
             Attribute = newData.Attribute;
             Location = newData.Location;
-            Name = newData.Name;
-            Description = newData.Description;
-            ImageURI = newData.ImageURI;
+
             Range = newData.Range;
             Damage = newData.Damage;
         }
