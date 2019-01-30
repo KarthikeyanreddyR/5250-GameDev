@@ -23,5 +23,12 @@ namespace GameDev.Services
         Task<bool> DeleteAsync_Item(Item data);
         Task<Item> GetAsync_Item(string id);
         Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false);
+
+        Task<bool> InsertUpdateAsync_Character(Character data);
+        Task<bool> AddAsync_Character(Character data);
+        Task<bool> UpdateAsync_Character(Character data);
+        Task<bool> DeleteAsync_Character(Character data);
+        Task<Character> GetAsync_Character(string id);
+        Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false);
     }
 }
