@@ -13,20 +13,25 @@ namespace GameDev.Views.Characters
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterNewPage : ContentPage
     {
-        public Character Character { get; set; }
+        public Character Data { get; set; }
 
         public CharacterNewPage()
         {
             InitializeComponent();
 
-            Character = new Character();
+            this.Data = new Character();
 
             BindingContext = this;
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddCharacter", Character);
+            // If the image in teh data box is empty, use the default one..
+            if (string.IsNullOrEmpty(Data.ImageURI))
+            {
+                this.Data.ImageURI = Character.DefaultImageUrl;
+            }
+            MessagingCenter.Send(this, "AddCharacter", this.Data);
             await Navigation.PopAsync();
         }
 

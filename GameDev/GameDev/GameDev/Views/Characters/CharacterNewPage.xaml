@@ -17,16 +17,16 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Text="Name : " FontSize="Medium" />
-                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Character.Name}" FontSize="Small" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Data.Name}" FontSize="Small" />
 
                 <Label Grid.Row="1" Grid.Column="0" Text="Description : " FontSize="Medium" />
-                <Editor Grid.Row="1" Grid.Column="1" Text="{Binding Character.Description}" FontSize="Small" />
+                <Editor Grid.Row="1" Grid.Column="1" Text="{Binding Data.Description}" FontSize="Small" />
 
                 <Label Grid.Row="2" Grid.Column="0" Text="Age : " FontSize="Medium" />
-                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Character.Age}" FontSize="Small" />
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Data.Age}" FontSize="Small" />
 
                 <Label Grid.Row="3" Grid.Column="0" Text="Image URL : " FontSize="Medium" />
-                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Character.ImageURI}" FontSize="Small" />
+                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Data.ImageURI}" FontSize="Small" />
             </Grid>
         </StackLayout>
     </ScrollView>

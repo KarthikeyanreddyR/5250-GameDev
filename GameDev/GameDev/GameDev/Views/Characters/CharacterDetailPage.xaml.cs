@@ -36,13 +36,13 @@ namespace GameDev.Views.Characters
 
         async void Edit_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CharacterEditPage());
+            await Navigation.PushAsync(new CharacterEditPage(_viewModel));
 
         }
 
         async void Delete_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CharacterDeletePage());
+            await Navigation.PushAsync(new CharacterDeletePage(_viewModel));
 
         }
 

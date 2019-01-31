@@ -28,25 +28,30 @@ namespace GameDev.Views.Characters
         {
             base.OnAppearing();
 
-            //if (viewModel.Items.Count == 0)
-            viewModel.LoadItemsCommand.Execute(null);
+            BindingContext = null;
+
+            InitializeComponent();
+
+            if (viewModel.Dataset.Count == 0 || viewModel.NeedsRefresh())
+                viewModel.LoadCharactersCommand.Execute(null);
+
+            BindingContext = viewModel;
         }
 
-        async void OnCharacterSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnCharacterSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (!(args.SelectedItem is Character character))
                 return;
 
-           await Navigation.PushAsync(new CharacterDetailPage(new CharacterDetailsViewModel(character)));
+            await Navigation.PushAsync(new CharacterDetailPage(new CharacterDetailsViewModel(character)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
         }
 
-        async void Add_Clicked(object sender, EventArgs e)
+        private async void Add_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CharacterNewPage());
-
         }
     }
 }
