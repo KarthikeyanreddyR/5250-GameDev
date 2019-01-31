@@ -37,15 +37,15 @@ namespace GameDev.Views.Characters
             if (!(args.SelectedItem is Character character))
                 return;
 
-           // await Navigation.PushAsync(new CharacterDetailPage(new CharacterDetailsViewModel(character)));
+           await Navigation.PushAsync(new CharacterDetailPage(new CharacterDetailsViewModel(character)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
         }
 
-        private void Add_Clicked(object sender, EventArgs e)
+        async void Add_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CharacterNewPage());
+            await Navigation.PushAsync(new CharacterNewPage());
 
         }
     }
