@@ -1,12 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.Characters.CharactersPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is Characters Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="GameDev.Views.Characters.CharactersPage"
+             x:Title="Character Page">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="Add_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="add.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>-->
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="0, 20, 0, 0">
+            <Label Text="Characters Page" FontSize="Medium"></Label>
+            <Button Text="[+] New Character" HorizontalOptions="EndAndExpand" FontSize="Small" Clicked="Add_Clicked"></Button>
         </StackLayout>
-    </ContentPage.Content>
+        <StackLayout Padding="0, 10, 0, 0">
+            <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Dataset}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnCharacterSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50"></Image>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                    <Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
