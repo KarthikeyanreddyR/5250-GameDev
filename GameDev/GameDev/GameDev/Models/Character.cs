@@ -25,9 +25,9 @@ namespace GameDev.Models
 
         private void CreateDefaultCharacter()
         {
-            Name = "Unknown";
-            Description = "Unknown";
-            ImageURI = null;
+            Name = "Sample character name";
+            Description = "Sample description of character. It's unique properties.";
+            ImageURI = "http://imgeUrl.com";
             Age = 0;
         }
 
