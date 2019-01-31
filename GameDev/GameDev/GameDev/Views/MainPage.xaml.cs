@@ -26,8 +26,6 @@ namespace GameDev.Views
         {
             InitializeComponent();
 
-            Title = "";
-
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemTypes.Home, (NavigationPage)Detail);
