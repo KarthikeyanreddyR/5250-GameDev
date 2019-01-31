@@ -1,40 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:GameDev.Views"
-             x:Class="GameDev.Views.MainPage" Padding="0, 0, 0, 0">
-    <TabbedPage.Children>
-        <NavigationPage Title="Home">
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:GameDev.Views"
+            x:Class="GameDev.Views.MainPage">
+
+    <MasterDetailPage.Master>
+        <views:MenuPage />
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:HomePage />
+                <views:HomePage/>
             </x:Arguments>
         </NavigationPage>
-
-        <NavigationPage Title="Manage">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ManagePage />
-            </x:Arguments>
-        </NavigationPage>
-
-        <NavigationPage Title="About">
-            <NavigationPage.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
-                </OnPlatform>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <views:AboutPage />
-            </x:Arguments>
-        </NavigationPage>
-    </TabbedPage.Children>
-</TabbedPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
