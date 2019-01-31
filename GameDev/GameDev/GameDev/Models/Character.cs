@@ -6,6 +6,8 @@ namespace GameDev.Models
 {
     public class Character : Entity<Character>
     {
+        public static string DefaultImageUrl = "http://gdurl.com/P7TZ";
+
         public int Age { get; set; }
 
         public Character()
@@ -25,10 +27,10 @@ namespace GameDev.Models
 
         private void CreateDefaultCharacter()
         {
-            Name = "Sample character name";
+            Name = "Doug";
             Description = "Sample description of character. It's unique properties.";
-            ImageURI = "http://imgeUrl.com";
-            Age = 0;
+            ImageURI = DefaultImageUrl;
+            Age = 20;
         }
 
         public void Update(Character newData)
