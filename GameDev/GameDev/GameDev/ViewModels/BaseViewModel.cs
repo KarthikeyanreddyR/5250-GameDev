@@ -44,6 +44,6 @@ namespace GameDev.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion INotifyPropertyChanged
     }
 }
