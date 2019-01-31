@@ -43,10 +43,10 @@ namespace GameDev.Services
             _itemsDataSet.Add(new Item("Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
 
             // Mock data for Characters
-            _charctersDataSet.Add(new Character("Character Name", "Character Description", null, 10));
-            _charctersDataSet.Add(new Character("Character Name", "Character Description", null, 10));
-            _charctersDataSet.Add(new Character("Character Name", "Character Description", null, 10));
-            _charctersDataSet.Add(new Character("Character Name", "Character Description", null, 10));
+            _charctersDataSet.Add(new Character("Character Name", "Character Description", "http://gdurl.com/RxRK", 10));
+            _charctersDataSet.Add(new Character("Character Name", "Character Description", "http://gdurl.com/dgT5", 10));
+            _charctersDataSet.Add(new Character("Character Name", "Character Description", "http://gdurl.com/NvcO", 10));
+            _charctersDataSet.Add(new Character("Character Name", "Character Description", "http://gdurl.com/fxM0", 10));
         }
 
         #region Items
