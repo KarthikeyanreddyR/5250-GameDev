@@ -9,9 +9,9 @@ namespace GameDev.Models
     {
         Home,
         Items,
-        Aliens,
-        Agents,
-        Score,
+        Characters,
+        Monsters,
+        Scores,
         About
     }
 

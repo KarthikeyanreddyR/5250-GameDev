@@ -23,10 +23,10 @@ namespace GameDev.Views
             menuItems = new List<MenuItems>
             {
                 new MenuItems {Id = MenuItemTypes.Home, Heading="Home"},
-                new MenuItems {Id = MenuItemTypes.Aliens, Heading="Aliens"},
-                new MenuItems {Id = MenuItemTypes.Agents, Heading="Agents"},
+                new MenuItems {Id = MenuItemTypes.Characters, Heading="Characters"},
+                new MenuItems {Id = MenuItemTypes.Monsters, Heading="Monsters"},
                 new MenuItems {Id = MenuItemTypes.Items, Heading="Items"},
-                new MenuItems {Id = MenuItemTypes.Score, Heading="Score"},
+                new MenuItems {Id = MenuItemTypes.Scores, Heading="Scores"},
                 new MenuItems {Id = MenuItemTypes.About, Heading="About"}
             };
 

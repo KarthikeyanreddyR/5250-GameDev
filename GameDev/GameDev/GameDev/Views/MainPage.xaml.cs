@@ -41,16 +41,16 @@ namespace GameDev.Views
                     case (int)MenuItemTypes.Home:
                         MenuPages.Add(id, new NavigationPage(new HomePage()));
                         break;
-                    case (int)MenuItemTypes.Aliens:
+                    case (int)MenuItemTypes.Characters:
                         MenuPages.Add(id, new NavigationPage(new CharactersPage()));
                         break;
-                    case (int)MenuItemTypes.Agents:
+                    case (int)MenuItemTypes.Monsters:
                         MenuPages.Add(id, new NavigationPage(new MonstersPage()));
                         break;
                     case (int)MenuItemTypes.Items:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemTypes.Score:
+                    case (int)MenuItemTypes.Scores:
                         MenuPages.Add(id, new NavigationPage(new ScoresPage()));
                         break;
                     case (int)MenuItemTypes.About:
