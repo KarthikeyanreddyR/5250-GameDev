@@ -32,12 +32,14 @@ namespace GameDev.ViewModels
 
         #endregion Singleton
 
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Item> Dataset { get; set; }
         public Command LoadItemsCommand { get; set; }
+
+        private bool _needsRefresh;
 
         public ItemsViewModel()
         {
-            Items = new ObservableCollection<Item>();
+            Dataset = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             MessagingCenter.Subscribe<ItemNewPage, Item>(this, "AddItem", async (obj, item) =>
@@ -49,7 +51,7 @@ namespace GameDev.ViewModels
             MessagingCenter.Subscribe<ItemEditPage, Item>(this, "EditItem", async (obj, item) =>
             {
                 var newItem = item as Item;
-                await EditItem(newItem);
+                await UpdateItem(newItem);
             });
 
             MessagingCenter.Subscribe<ItemDeletePage, Item>(this, "DeleteItem", async (obj, item) =>
@@ -57,6 +59,25 @@ namespace GameDev.ViewModels
                 var newItem = item as Item;
                 await DeleteItem(newItem);
             });
+        }
+
+        #region Refresh
+
+        public bool NeedsRefresh()
+        {
+            if (_needsRefresh)
+            {
+                _needsRefresh = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        // Sets the need to refresh
+        public void SetNeedsRefresh(bool value)
+        {
+            _needsRefresh = value;
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -68,12 +89,14 @@ namespace GameDev.ViewModels
 
             try
             {
-                Items.Clear();
+                Dataset.Clear();
                 var items = await DataStore.GetAllAsync_Item(true);
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    Dataset.Add(item);
                 }
+
+                SetNeedsRefresh(false);
             }
             catch (Exception ex)
             {
@@ -85,32 +108,31 @@ namespace GameDev.ViewModels
             }
         }
 
+        #endregion Refresh
+
         private async Task<bool> AddItem(Item newItem)
         {
-            Items.Add(newItem);
+            Dataset.Add(newItem);
             return await DataStore.AddAsync_Item(newItem);
         }
 
-        public async Task<bool> EditItem(Item editItem)
+        public async Task<bool> UpdateItem(Item editItem)
         {
             // Find the Item, then update it
-            var myData = Items.FirstOrDefault(arg => arg.Id == editItem.Id);
+            var myData = Dataset.FirstOrDefault(arg => arg.Id == editItem.Id);
             if (myData == null)
             {
                 return false;
             }
 
             myData.Update(editItem);
-            await DataStore.UpdateAsync_Item(myData);
-
-            //_needsRefresh = true;
-
-            return true;
+            SetNeedsRefresh(true);
+            return await DataStore.UpdateAsync_Item(myData);
         }
 
         private async Task<bool> DeleteItem(Item deleteItem)
         {
-            Items.Remove(deleteItem);
+            Dataset.Remove(deleteItem);
             return await DataStore.DeleteAsync_Item(deleteItem);
         }
     }

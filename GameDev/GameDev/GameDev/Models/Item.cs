@@ -4,9 +4,7 @@ namespace GameDev.Models
 {
     public class Item : Entity<Item>
     {
-        public int Range { get; set; }
-
-        public int Damage { get; set; }
+        public static string DefaultImageUrl = "http://gdurl.com/P7TZ";
 
         public AttributeEnum Attribute { get; set; }
 
@@ -16,15 +14,11 @@ namespace GameDev.Models
 
         public Item(string name, string description, string imageUri, int range, int damage, AttributeEnum attribute, ItemLocationEnum location, int value)
         {
-
             CreateDefaultItem();
 
             Name = name;
             Description = description;
             ImageURI = imageUri;
-
-            Range = range;
-            Damage = damage;
             Attribute = attribute;
             Location = location;
             Value = value;
@@ -37,14 +31,10 @@ namespace GameDev.Models
 
         private void CreateDefaultItem()
         {
-            Name = "Unknown";
-            Description = "Unknown";
-            ImageURI = null;
-
-            Range = 0;
+            Name = "Item Name";
+            Description = "Item description";
+            ImageURI = Item.DefaultImageUrl;
             Value = 0;
-            Damage = 0;
-
             Location = ItemLocationEnum.Unknown;
             Attribute = AttributeEnum.Unknown;
         }
@@ -60,13 +50,9 @@ namespace GameDev.Models
             Name = newData.Name;
             Description = newData.Description;            
             ImageURI = newData.ImageURI;
-
             Value = newData.Value;
             Attribute = newData.Attribute;
             Location = newData.Location;
-
-            Range = newData.Range;
-            Damage = newData.Damage;
         }
     }
 }

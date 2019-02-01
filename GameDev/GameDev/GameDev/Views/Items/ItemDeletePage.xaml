@@ -2,11 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameDev.Views.Items.ItemDeletePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ScrollView Padding="0, 20, 0, 0">
+        <StackLayout Padding="5, 0, 5, 0">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Item Details Page" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Button Text="Delete" HorizontalOptions="EndAndExpand" Clicked="Delete_Clicked"></Button>
+                <Button Text="Cancel" HorizontalOptions="End" Clicked="Cancel_Clicked"></Button>
+            </StackLayout>
+            <StackLayout Padding="0, 10, 0, 0">
+                <Image Source="{Binding Item.ImageURI}" 
+                       WidthRequest="300" HeightRequest="300" 
+                       HorizontalOptions="CenterAndExpand"></Image>
+                <StackLayout Padding="0, 10, 0, 0" Spacing="15">
+                    <Label Text="{Binding Item.Name, StringFormat='Name : {0}'}" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding Item.Description, StringFormat='Description : {0}'}" LineBreakMode="WordWrap"></Label>
+                    <Label Text="{Binding Item.Attribute, StringFormat='Attribute : {0}'}"></Label>
+                    <Label Text="{Binding Item.Location, StringFormat='Location : {0}'}"></Label>
+                    <Label Text="{Binding Item.Value, StringFormat='Value : {0}'}"></Label>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

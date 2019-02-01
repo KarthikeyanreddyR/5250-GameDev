@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GameDev.Models
@@ -23,5 +24,34 @@ namespace GameDev.Models
 
         // The highest value health can go
         MaxHealth = 18,
+    }
+
+    // Helper functions for the AttribureList
+    public static class AttributeHelper
+    {
+        public static List<string> GetList
+        {
+            get
+            {
+                return Enum.GetNames(typeof(AttributeEnum)).ToList();
+            }
+        }
+
+        public static List<string> GetListForItems
+        {
+            get
+            {
+                var _list = Enum.GetValues(typeof(AttributeEnum)).Cast<AttributeEnum>()
+                    .Where(e => e != AttributeEnum.MaxHealth && e!= AttributeEnum.CurrentHealth)
+                    .Select(v => v.ToString())
+                    .ToList();
+                return _list;
+            }
+        }
+
+        public static AttributeEnum ConvertStringToEnum(string value)
+        {
+            return (AttributeEnum)Enum.Parse(typeof(AttributeEnum), value);
+        }
     }
 }

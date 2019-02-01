@@ -1,25 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.Items.ItemsPage"
-             x:Name="BrowseItemsPage">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
+             x:Class="GameDev.Views.Items.ItemsPage">
     <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Items Page" FontSize="Medium"></Label>
-            <Button Text="[ add ]" HorizontalOptions="EndAndExpand"></Button>
+        <StackLayout Orientation="Horizontal" Padding="5, 20, 5, 0">
+            <Label Text="Items Page" FontSize="Medium" FontAttributes="Bold"></Label>
+            <Button Text="Add Item" HorizontalOptions="EndAndExpand" Clicked="Add_Clicked"></Button>
         </StackLayout>
         <StackLayout Padding="0, 10, 0, 0">
             <ListView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
                 RefreshCommand="{Binding LoadItemsCommand}"
@@ -30,15 +20,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Name}" 
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                                <Label Text="{Binding Description}" 
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50"></Image>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                    <Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -46,5 +33,4 @@
             </ListView>
         </StackLayout>
     </StackLayout>
-    
 </ContentPage>

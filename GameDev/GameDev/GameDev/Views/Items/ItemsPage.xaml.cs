@@ -36,17 +36,21 @@ namespace GameDev.Views.Items
             ItemsListView.SelectedItem = null;
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        async void Add_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new ItemNewPage()));
+            await Navigation.PushAsync(new ItemNewPage());
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            BindingContext = null;
+            InitializeComponent();
 
-            //if (viewModel.Items.Count == 0)
+            if (viewModel.Dataset.Count == 0 || viewModel.NeedsRefresh())
                 viewModel.LoadItemsCommand.Execute(null);
+
+            BindingContext = viewModel;
         }
     }
 }

@@ -2,36 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameDev.Views.Items.ItemDetailPage">
-    <ScrollView>
-        <StackLayout Spacing="20" Padding="15" BindingContext="{Binding Item}">
+    <ScrollView Padding="0, 20, 0, 0">
+        <StackLayout Padding="5, 0, 5, 0">
             <StackLayout Orientation="Horizontal">
-                <Label Text="Item Details Page" FontSize="Medium"></Label>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                    <Button Text="[ edit ]"></Button>
-                    <Button Text="[ delete ]"></Button>
-                    <Button Text="[ cancel ]"></Button>
-                </StackLayout>
+                <Label Text="Item Details Page" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Button Text="Edit" HorizontalOptions="EndAndExpand" Clicked="Edit_Clicked"></Button>
+                <Button Text="Delete" HorizontalOptions="End" Clicked="Delete_Clicked"></Button>
+                <Button Text="Cancel" HorizontalOptions="End" Clicked="Cancel_Clicked"></Button>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Padding="0, 10, 0, 0">
-                <StackLayout WidthRequest="100" HeightRequest="100">
-                    <Image Source="joystick.png" HorizontalOptions="Start"></Image>
-                </StackLayout>
-                <StackLayout Padding="20, 10, 0, 0">
-                    <Label Text="{Binding Name}" FontSize="Small" />
-                    <Label Text="{Binding Description}"/>
-                    <Label Text="{Binding Attribute}"/>
-                    <Label Text="{Binding Location}"/>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Damage : " />
-                        <Label Text="{Binding Damage}" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Value : " />
-                        <Label Text="{Binding Value}" />
-                    </StackLayout>
+            <StackLayout Padding="0, 10, 0, 0">
+                <Image Source="{Binding Item.ImageURI}" 
+                       WidthRequest="300" HeightRequest="300" 
+                       HorizontalOptions="CenterAndExpand"></Image>
+                <StackLayout Padding="0, 10, 0, 0" Spacing="15">
+                    <Label Text="{Binding Item.Name, StringFormat='Name : {0}'}" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding Item.Description, StringFormat='Description : {0}'}" LineBreakMode="WordWrap"></Label>
+                    <Label Text="{Binding Item.Attribute, StringFormat='Attribute : {0}'}"></Label>
+                    <Label Text="{Binding Item.Location, StringFormat='Location : {0}'}"></Label>
+                    <Label Text="{Binding Item.Value, StringFormat='Value : {0}'}"></Label>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

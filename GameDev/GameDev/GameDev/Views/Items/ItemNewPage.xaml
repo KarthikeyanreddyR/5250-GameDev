@@ -1,30 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.Items.ItemNewPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="cancel.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="save.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
+             x:Class="GameDev.Views.Items.ItemNewPage"
+             xmlns:local="clr-namespace:GameDev.Models">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CustomStringEnumConverter x:Key="StringEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+        <StackLayout Padding="0, 20, 0, 0">
+            <StackLayout Orientation="Horizontal" Padding="5, 0, 5, 0">
+                <Label Text="New Item Page" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Button Text="Save" HorizontalOptions="EndAndExpand" Clicked="Save_Clicked"></Button>
+                <Button Text="Cancel" HorizontalOptions="End" Clicked="Cancel_Clicked"></Button>
+            </StackLayout>
+            <Grid Padding="5, 10, 5, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Name : " FontSize="Medium" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Data.Name}" FontSize="Small" />
 
-    <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Item.Text}" FontSize="Small" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
+                <Label Grid.Row="1" Grid.Column="0" Text="Description : " FontSize="Medium" />
+                <Editor Grid.Row="1" Grid.Column="1" Text="{Binding Data.Description}" FontSize="Small" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Image URL : " FontSize="Medium" />
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Data.ImageURI}" FontSize="Small" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Location : " FontSize="Medium" />
+                <Picker Grid.Row="3" Grid.Column="1" 
+                        x:Name="LocationPicker" 
+                        ItemsSource="{x:Static local:ItemLocationHelper.GetList}" 
+                        SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" />
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Attibute : " FontSize="Medium" />
+                <Picker Grid.Row="4" Grid.Column="1" 
+                        x:Name="AttributePicker" 
+                        ItemsSource="{x:Static local:AttributeHelper.GetListForItems}" 
+                        SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" />
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Value : " FontSize="Medium" />
+                <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                    <Label Text="{Binding Source={x:Reference _valueStepper}, Path=Value}" FontSize="Medium"></Label>
+                    <Stepper x:Name="_valueStepper" Minimum="0" Maximum="20" Increment="1" Value="{Binding Data.Value}" />
+                </StackLayout>
+            </Grid>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

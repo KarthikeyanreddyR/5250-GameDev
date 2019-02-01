@@ -29,5 +29,23 @@ namespace GameDev.Views.Items
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
         }
+
+        private async void Edit_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ItemEditPage(viewModel));
+
+        }
+
+        private async void Delete_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ItemDeletePage(viewModel));
+
+        }
+
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+
+        }
     }
 }

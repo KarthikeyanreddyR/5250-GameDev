@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GameDev.Models
@@ -32,6 +33,24 @@ namespace GameDev.Models
 
         // Boots, shoes, socks or anything else on the feet
         Feet = 40,
+
+    }
+
+    // Helper functions for the Item Locations
+    public static class ItemLocationHelper
+    {
+        public static List<string> GetList
+        {
+            get
+            {
+                return Enum.GetNames(typeof(ItemLocationEnum)).ToList();
+            }
+        }
+
+        public static ItemLocationEnum ConvertStringToEnum(string value)
+        {
+            return (ItemLocationEnum)Enum.Parse(typeof(ItemLocationEnum), value);
+        }
 
     }
 }
