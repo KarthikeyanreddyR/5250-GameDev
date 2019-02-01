@@ -10,9 +10,32 @@ using GameDev.Services;
 
 namespace GameDev.ViewModels
 {
+    public enum DataStoreEnum { Unknown = 0, SQL = 1, Mock = 2 }
+
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore DataStore => DependencyService.Get<IDataStore>() ?? MockDataStore.Instance;
+        private IDataStore DataStoreMock => DependencyService.Get<IDataStore>() ?? MockDataStore.Instance;
+        private IDataStore DataStoreSQL => DependencyService.Get<IDataStore>() ?? SQLDataStore.Instance;
+
+        public IDataStore DataStore;
+
+        public BaseViewModel()
+        {
+            SetDataStore(DataStoreEnum.Mock);
+        }
+
+        public void SetDataStore(DataStoreEnum data)
+        {
+            switch (data)
+            {
+                case DataStoreEnum.Mock:
+                    DataStore = DataStoreMock;
+                    break;
+                default:
+                    DataStore = DataStoreSQL;
+                    break;
+            }
+        }
 
         bool isBusy = false;
         public bool IsBusy

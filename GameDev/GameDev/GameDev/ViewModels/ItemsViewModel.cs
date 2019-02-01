@@ -108,6 +108,15 @@ namespace GameDev.ViewModels
             }
         }
 
+        /**
+         * Force Data Refresh
+         *  -- Used  when DataSore is toggled between Mock and SQL. Check <see cref="Services.MasterDataStore"/>
+         */
+        public void ForceDataRefresh()
+        {
+            LoadItemsCommand.Execute(null);
+        }
+
         #endregion Refresh
 
         private async Task<bool> AddItem(Item newItem)

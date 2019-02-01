@@ -2,56 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameDev.Views.AboutPage"
-             xmlns:vm="clr-namespace:GameDev.ViewModels"
-             Title="{Binding Title}">
-    
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!--Page Level Resources: Compatible with Xamarin Live Player -->
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
-    <Grid>
+             Title="About">
+    <Grid Padding="10, 20, 10, 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
+        <AbsoluteLayout Grid.Row="0" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <Label Text="Karthikeyan Reddy Rokkam" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Label Text="Assignment Week 4" FontSize="Medium" FontAttributes="Bold"></Label>
+                <Label x:Name="DateTimeLabel" FontSize="Medium" FontAttributes="Bold"></Label>
+            </StackLayout>
+        </AbsoluteLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="20,40,0,0" Spacing="10">
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Karthikeyan Reddy Rokkam" FontAttributes="Bold" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Assignment Week 3" FontAttributes="Bold" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="{Binding DateTimeLabel, StringFormat='{0:MMMM d, yyyy HH:mm}'}" FontAttributes="Bold" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+            <StackLayout Padding="0 ,10, 0, 0" Spacing="15">
+                <Label Text="Configuration" FontSize="Medium" FontAttributes="Bold" TextDecorations="Underline"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Use MockDataStore"></Label>
+                    <Switch x:Name="SettingDataSource" HorizontalOptions="EndAndExpand" Toggled="Switch_OnToggled"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Clear DataStore" VerticalOptions="CenterAndExpand"></Label>
+                    <Button Text="Clear" Clicked="ClearDatabase_Command" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </Grid>
