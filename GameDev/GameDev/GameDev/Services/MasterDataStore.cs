@@ -27,6 +27,7 @@ namespace GameDev.Services
                     _dataStoreEnum = DataStoreEnum.Mock;
                     break;
                 case DataStoreEnum.SQL:
+                case DataStoreEnum.Unknown:
                 default:
                     _dataStoreEnum = DataStoreEnum.SQL;
                     break;
