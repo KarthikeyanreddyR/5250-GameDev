@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.Characters.CharactersPage">
-    <StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="5, 20, 5, 0">
-            <Label Text="Characters Page" FontSize="Medium" FontAttributes="Bold"></Label>
-            <Button Text="Add Character" HorizontalOptions="EndAndExpand" Clicked="Add_Clicked"></Button>
-        </StackLayout>
-        <StackLayout Padding="0, 10, 0, 0">
+             x:Class="GameDev.Views.Characters.CharactersPage"
+             Title="Characters Page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddCharacter" Order="Secondary" Priority="0"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ScrollView Padding="0, 20, 0, 0">
+        <StackLayout Padding="5, 0, 5, 0">
             <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
@@ -33,5 +33,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

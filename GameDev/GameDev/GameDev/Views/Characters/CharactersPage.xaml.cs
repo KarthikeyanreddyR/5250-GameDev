@@ -30,6 +30,9 @@ namespace GameDev.Views.Characters
 
             BindingContext = null;
 
+            if (ToolbarItems.Count > 0)
+                ToolbarItems.Clear();
+
             InitializeComponent();
 
             if (viewModel.Dataset.Count == 0 || viewModel.NeedsRefresh())
@@ -49,7 +52,7 @@ namespace GameDev.Views.Characters
             ItemsListView.SelectedItem = null;
         }
 
-        private async void Add_Clicked(object sender, EventArgs e)
+        private async void AddCharacter(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CharacterNewPage());
         }

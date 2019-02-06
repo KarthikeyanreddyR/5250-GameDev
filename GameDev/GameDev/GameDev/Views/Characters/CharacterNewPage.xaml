@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.Characters.CharacterNewPage">
-    <ScrollView>
-        <StackLayout Padding="0, 20, 0, 0">
-            <StackLayout Orientation="Horizontal" Padding="5, 0, 5, 0">
-                <Label Text="New Character Page" FontSize="Medium" FontAttributes="Bold"></Label>
-                <Button Text="Save" HorizontalOptions="EndAndExpand" Clicked="Save_Clicked"></Button>
-                <Button Text="Cancel" HorizontalOptions="End" Clicked="Cancel_Clicked"></Button>
-            </StackLayout>
-            <Grid Padding="5, 10, 5, 0">
+             x:Class="GameDev.Views.Characters.CharacterNewPage"
+             Title="Add Character Page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="SaveCharacter" Order="Secondary" Priority="0"></ToolbarItem>
+        <ToolbarItem Text="Cancel" Clicked="CancelCharacter" Order="Secondary" Priority="0"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ScrollView Padding="0, 20, 0, 0">
+        <StackLayout Padding="5, 0, 5, 0">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>

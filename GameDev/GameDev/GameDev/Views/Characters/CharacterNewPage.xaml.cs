@@ -24,7 +24,7 @@ namespace GameDev.Views.Characters
             BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        async void SaveCharacter(object sender, EventArgs e)
         {
             // If the image in teh data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
@@ -35,9 +35,18 @@ namespace GameDev.Views.Characters
             await Navigation.PopAsync();
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        async void CancelCharacter(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (ToolbarItems.Count > 0)
+                ToolbarItems.Clear();
+            InitializeComponent();
+            BindingContext = this;
         }
     }
 }

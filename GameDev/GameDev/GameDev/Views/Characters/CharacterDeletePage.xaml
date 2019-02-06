@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.Characters.CharacterDeletePage">
+             x:Class="GameDev.Views.Characters.CharacterDeletePage"
+             Title="Delete Character Page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="DeleteCharacter" Order="Secondary" Priority="0"></ToolbarItem>
+        <ToolbarItem Text="Cancel" Clicked="CancelCharacter" Order="Secondary" Priority="0"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ScrollView Padding="0, 20, 0, 0">
         <StackLayout Padding="5, 0, 5, 0">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Character Delete Page" FontSize="Medium" FontAttributes="Bold"></Label>
-                <Button Text="Delete" HorizontalOptions="EndAndExpand" Clicked="Delete_Clicked"></Button>
-                <Button Text="Cancel" HorizontalOptions="End" Clicked="Cancel_Clicked"></Button>
-            </StackLayout>
-            <StackLayout Padding="0, 10, 0, 0">
                 <Image Source="{Binding Character.ImageURI}" 
                        WidthRequest="300" HeightRequest="300" 
                        HorizontalOptions="CenterAndExpand"></Image>
@@ -18,7 +17,6 @@
                     <Label Text="{Binding Character.Description, StringFormat='Description : {0}'}"></Label>
                     <Label Text="{Binding Character.Age, StringFormat='Age : {0}'}"></Label>
                 </StackLayout>
-            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

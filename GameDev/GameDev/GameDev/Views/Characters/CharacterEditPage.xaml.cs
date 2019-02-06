@@ -12,28 +12,28 @@ using GameDev.ViewModels;
 
 namespace GameDev.Views.Characters
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CharacterEditPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CharacterEditPage : ContentPage
+    {
         private CharacterDetailsViewModel _viewModel;
 
         public Character Data { get; set; }
 
-        public CharacterEditPage (CharacterDetailsViewModel viewModel)
-		{
-			InitializeComponent ();
+        public CharacterEditPage(CharacterDetailsViewModel viewModel)
+        {
+            InitializeComponent();
 
             this.Data = viewModel.Character;
 
             BindingContext = _viewModel = viewModel;
         }
 
-        private async void Cancel_Clicked(object sender, EventArgs e)
+        private async void CancelCharacter(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
-        private async void Save_Clicked(object sender, EventArgs e)
+        private async void SaveCharacter(object sender, EventArgs e)
         {
             // If the image in teh data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
@@ -51,6 +51,16 @@ namespace GameDev.Views.Characters
 
             // Last, remove this page
             Navigation.RemovePage(this);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (ToolbarItems.Count > 0)
+                ToolbarItems.Clear();
+            InitializeComponent();
+            this.Data = _viewModel.Character;
+            BindingContext = _viewModel;
         }
     }
 }

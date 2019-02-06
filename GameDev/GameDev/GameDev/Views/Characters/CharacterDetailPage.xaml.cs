@@ -12,21 +12,21 @@ using GameDev.ViewModels;
 
 namespace GameDev.Views.Characters
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CharacterDetailPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CharacterDetailPage : ContentPage
+    {
 
         public CharacterDetailsViewModel _viewModel;
 
-		public CharacterDetailPage ()
-		{
-			InitializeComponent ();
+        public CharacterDetailPage()
+        {
+            InitializeComponent();
 
             var character = new Character();
             _viewModel = new CharacterDetailsViewModel(character);
             BindingContext = _viewModel;
 
-		}
+        }
 
         public CharacterDetailPage(CharacterDetailsViewModel viewModel)
         {
@@ -34,22 +34,31 @@ namespace GameDev.Views.Characters
             BindingContext = _viewModel = viewModel;
         }
 
-        async void Edit_Clicked(object sender, EventArgs e)
+        async void EditCharacter(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CharacterEditPage(_viewModel));
 
         }
 
-        async void Delete_Clicked(object sender, EventArgs e)
+        async void DeleteCharacter(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CharacterDeletePage(_viewModel));
 
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        async void CancelCharacter(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (ToolbarItems.Count > 0)
+                ToolbarItems.Clear();
+            InitializeComponent();
+            BindingContext = _viewModel;
         }
     }
 }
