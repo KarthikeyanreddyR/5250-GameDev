@@ -27,13 +27,13 @@ namespace GameDev.Services
         #endregion Singleton
 
         private List<Item> _itemsDataSet = new List<Item>();
-        private List<Character> _charctersDataSet = new List<Character>();
+        private List<Character> _charactersDataSet = new List<Character>();
 
         public MockDataStore()
         {
-            CreateMockItemsDataSet();           
+            CreateMockItemsDataSet();
         }
-        
+
         private void CreateMockItemsDataSet()
         {
             // Mock data for Items
@@ -43,10 +43,14 @@ namespace GameDev.Services
             _itemsDataSet.Add(new Item("Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
 
             // Mock data for Characters
-            _charctersDataSet.Add(new Character("3 Eyed", "Predicts future attacks with extra eye.", "http://gdurl.com/RxRK", 100));
-            _charctersDataSet.Add(new Character("Sea Alien", "Small and quick to attack.", "http://gdurl.com/dgT5", 150));
-            _charctersDataSet.Add(new Character("Happy Alien", "Smiling can be dangerous!!", "http://gdurl.com/NvcO", 130));
-            _charctersDataSet.Add(new Character("8 Arms", "Multiple arms makes it hard to attack.", "http://gdurl.com/fxM0", 180));
+            _charactersDataSet.Add(new Character("3 Eyed", "Predicts future attacks with extra eye.", "http://gdurl.com/RxRK", 100));
+            _charactersDataSet.Add(new Character("Sea Alien", "Small and quick to attack.", "http://gdurl.com/dgT5", 150));
+            _charactersDataSet.Add(new Character("Happy Alien", "Smiling can be dangerous!!", "http://gdurl.com/NvcO", 130));
+            _charactersDataSet.Add(new Character("8 Arms", "Multiple arms makes it hard to attack.", "http://gdurl.com/fxM0", 180));
+            _charactersDataSet.Add(new Character("Grass Hopper", "Multiple arms makes it hard to attack.", "http://gdurl.com/c2iZ",40));
+            _charactersDataSet.Add(new Character("Pumpkin Ghost", "Ariel attacks are deadly!!!", "http://gdurl.com/HSHv",500));
+            _charactersDataSet.Add(new Character("Mixed Horns", "Simple creature with most defense.", "http://gdurl.com/IGNK",100));
+            _charactersDataSet.Add(new Character("Guitar Ghost", "Attacks with sound of red guitar.", "http://gdurl.com/O6wJ",490));
         }
 
         #region Items
@@ -118,7 +122,7 @@ namespace GameDev.Services
             var oldData = await GetAsync_Character(data.Id);
             if (oldData == null)
             {
-                _charctersDataSet.Add(data);
+                _charactersDataSet.Add(data);
                 return await Task.FromResult(true);
             }
 
@@ -135,13 +139,13 @@ namespace GameDev.Services
 
         public async Task<bool> AddAsync_Character(Character data)
         {
-            _charctersDataSet.Add(data);
+            _charactersDataSet.Add(data);
             return await Task.FromResult(true);
         }
 
         public async Task<bool> UpdateAsync_Character(Character data)
         {
-            var myData = _charctersDataSet.FirstOrDefault(arg => arg.Id == data.Id);
+            var myData = _charactersDataSet.FirstOrDefault(arg => arg.Id == data.Id);
             if (myData == null)
             {
                 return await Task.FromResult(false);
@@ -154,20 +158,20 @@ namespace GameDev.Services
 
         public async Task<bool> DeleteAsync_Character(Character data)
         {
-            var myData = _charctersDataSet.FirstOrDefault(arg => arg.Id == data.Id);
-            _charctersDataSet.Remove(myData);
+            var myData = _charactersDataSet.FirstOrDefault(arg => arg.Id == data.Id);
+            _charactersDataSet.Remove(myData);
 
             return await Task.FromResult(true);
         }
 
         public async Task<Character> GetAsync_Character(string id)
         {
-            return await Task.FromResult(_charctersDataSet.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(_charactersDataSet.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
         {
-            return await Task.FromResult(_charctersDataSet);
+            return await Task.FromResult(_charactersDataSet);
         }
 
         #endregion Characters

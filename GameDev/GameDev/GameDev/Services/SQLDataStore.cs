@@ -77,6 +77,10 @@ namespace GameDev.Services
             App.Database.InsertAsync(new Character("SQL - Sea Alien", "Small and quick to attack.", "http://gdurl.com/dgT5", 150));
             App.Database.InsertAsync(new Character("SQL - Happy Alien", "Smiling can be dangerous!!", "http://gdurl.com/NvcO", 130));
             App.Database.InsertAsync(new Character("SQL - 8 Arms", "Multiple arms makes it hard to attack.", "http://gdurl.com/fxM0", 180));
+            App.Database.InsertAsync(new Character("Grass Hopper", "Multiple arms makes it hard to attack.", "http://gdurl.com/c2iZ", 40));
+            App.Database.InsertAsync(new Character("Pumpkin Ghost", "Ariel attacks are deadly!!!", "http://gdurl.com/HSHv", 500));
+            App.Database.InsertAsync(new Character("Mixed Horns", "Simple creature with most defense.", "http://gdurl.com/IGNK", 100));
+            App.Database.InsertAsync(new Character("Guitar Ghost", "Attacks with sound of red guitar.", "http://gdurl.com/O6wJ", 490));
         }
 
         private void NotifyViewModelsOfDataChange()
