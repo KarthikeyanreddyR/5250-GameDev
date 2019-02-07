@@ -27,7 +27,7 @@ namespace GameDev
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            MainPage = new PickCharactersPage();
         }
 
         protected override void OnStart()
