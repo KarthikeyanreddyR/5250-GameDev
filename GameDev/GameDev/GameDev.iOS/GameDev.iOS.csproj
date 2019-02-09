@@ -148,7 +148,4 @@
       <Name>GameDev</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\gameDev.png" />
-  </ItemGroup>
 </Project>

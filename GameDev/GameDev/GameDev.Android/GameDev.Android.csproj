@@ -105,9 +105,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\joystick.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\checkbox_checked_icon.png" />
   </ItemGroup>
   <ItemGroup>
