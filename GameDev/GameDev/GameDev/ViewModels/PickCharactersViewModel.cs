@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,17 +10,49 @@ using Xamarin.Forms;
 
 namespace GameDev.ViewModels
 {
-    public class MultiSelectData
+    public class MultiSelectData : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Character Data { get; set; }
 
-        public bool IsSelected { get; set; }
+        private bool _IsSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _IsSelected;
+            }
+            set
+            {
+                _IsSelected = value;
+                OnPropertyChanged("IsSelected");
+            }
+        }
 
-        public MultiSelectData( Character character, bool isSelected)
+        private string _Image;
+        public string Image
+        {
+            get { return _Image; }
+            set
+            {
+                _Image = value;
+                OnPropertyChanged("Image");
+            }
+        }
+
+        public MultiSelectData(Character character, bool isSelected)
         {
             Data = character;
             IsSelected = isSelected;
+            Image = IsSelected ? "checkbox_checked_icon.png" : "checkbox_unchecked_icon.png";
         }
+
+        private void OnPropertyChanged(string props)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(props));
+        }
+        
     }
     public class PickCharactersViewModel : BaseViewModel
     {

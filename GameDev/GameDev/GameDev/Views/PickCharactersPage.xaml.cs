@@ -9,31 +9,35 @@ using Xamarin.Forms.Xaml;
 
 namespace GameDev.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PickCharactersPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PickCharactersPage : ContentPage
     {
         private PickCharactersViewModel _viewModel;
 
-		public PickCharactersPage ()
-		{
-			InitializeComponent ();
+        public PickCharactersPage()
+        {
+            InitializeComponent();
             BindingContext = _viewModel = PickCharactersViewModel.Instance;
-            if(_viewModel.DataSet.Count == 0)
-            _viewModel.LoadCommand.Execute(null);
+            if (_viewModel.DataSet.Count == 0)
+                _viewModel.LoadCommand.Execute(null);
         }
 
-        private void OnCharacterSelected(object sender, SelectedItemChangedEventArgs e)
+        private void OnCharacterTapped(object sender, ItemTappedEventArgs e)
         {
-            if (!(e.SelectedItem is MultiSelectData multiSelectData))
+            if (!(e.Item is MultiSelectData multiSelectData))
                 return;
+            var index = _viewModel.DataSet.IndexOf(multiSelectData);
+            _viewModel.DataSet[index].IsSelected = _viewModel.DataSet[index].IsSelected ? false : true;
+            _viewModel.DataSet[index].Image = _viewModel.DataSet[index].Image.Equals("checkbox_unchecked_icon.png")
+                ? "checkbox_checked_icon.png" : "checkbox_unchecked_icon.png";
 
-            Console.WriteLine(multiSelectData);
-            multiSelectData.IsSelected = true;
+            CharactersListView.SelectedItem = null;
         }
 
         private void NextClicked(object sender, EventArgs e)
         {
             Console.WriteLine(_viewModel);
         }
+
     }
 }

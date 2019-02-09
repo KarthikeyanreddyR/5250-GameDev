@@ -3,30 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameDev.Views.PickCharactersPage"
              Title="Pick Characters">
-    <ScrollView Padding="0, 20, 0, 0">
-        <StackLayout Padding="5, 0, 5, 0">
-            <ListView x:Name="ItemsListView"
-                      ItemsSource="{Binding DataSet}"
+    <StackLayout Padding="5, 20, 5, 0">
+        <StackLayout Padding="0, 0, 0, 5">
+            <Label Text="Pick Characters" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
+        </StackLayout>
+        <ListView x:Name="CharactersListView"
+                      ItemsSource="{Binding DataSet, Mode=TwoWay}"
                       VerticalOptions="FillAndExpand"
                       HasUnevenRows="true"
                       RefreshCommand="{Binding LoadCommand}"
-                      ItemSelected="OnCharacterSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Image Source="{Binding Data.ImageURI}" WidthRequest="50" HeightRequest="50"></Image>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Data.Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                    <Label Text="{Binding Data.Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
-                                    <Label Text="{Binding Data.Age, StringFormat='Age : {0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
-                                </StackLayout>
+                      ItemTapped="OnCharacterTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Image Source="{Binding Image}" HeightRequest="20" WidthRequest="20"></Image>
+                            <Image Source="{Binding Data.ImageURI}" WidthRequest="50" HeightRequest="50" Margin="10, 0, 0, 0"></Image>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Data.Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                <Label Text="{Binding Data.Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                <Label Text="{Binding Data.Age, StringFormat='Age : {0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Text="Next" Clicked="NextClicked"></Button>
-        </StackLayout>
-    </ScrollView>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Next" Clicked="NextClicked"></Button>
+    </StackLayout>
 </ContentPage>
