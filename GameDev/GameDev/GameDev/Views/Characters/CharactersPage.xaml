@@ -6,9 +6,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddCharacter" Order="Secondary" Priority="0"></ToolbarItem>
     </ContentPage.ToolbarItems>
-    <ScrollView Padding="0, 20, 0, 0">
-        <StackLayout Padding="5, 0, 5, 0">
-            <ListView x:Name="ItemsListView"
+    <StackLayout Padding="5, 20, 5, 0">
+        <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -17,21 +16,20 @@
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement"
                 ItemSelected="OnCharacterSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50"></Image>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                    <Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
-                                    <Label Text="{Binding Age, StringFormat='Age : {0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
-                                </StackLayout>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50"></Image>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                <Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                <Label Text="{Binding Age, StringFormat='Age : {0}'}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-    </ScrollView>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
