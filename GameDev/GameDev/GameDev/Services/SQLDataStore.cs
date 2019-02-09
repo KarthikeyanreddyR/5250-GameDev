@@ -67,20 +67,20 @@ namespace GameDev.Services
         private void InitializeSeedData()
         {
             // Mock data for Items
-            App.Database.InsertAsync(new Item("SQL - Noisy Cricket", "Small, portable gun which make huge boom!!!", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10));
-            App.Database.InsertAsync(new Item("SQL - De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10));
-            App.Database.InsertAsync(new Item("SQL - Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.Feet, 10));
-            App.Database.InsertAsync(new Item("SQL - Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
+            App.Database.InsertAsync(new Item("Noisy Cricket", "Small, portable gun which make huge boom!!!", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10));
+            App.Database.InsertAsync(new Item("De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10));
+            App.Database.InsertAsync(new Item("Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.Feet, 10));
+            App.Database.InsertAsync(new Item("Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
 
             // Mock data for Characters
-            App.Database.InsertAsync(new Character("SQL - 3 Eyed", "Predicts future attacks with extra eye.", "http://gdurl.com/RxRK", 100));
-            App.Database.InsertAsync(new Character("SQL - Sea Alien", "Small and quick to attack.", "http://gdurl.com/dgT5", 150));
-            App.Database.InsertAsync(new Character("SQL - Happy Alien", "Smiling can be dangerous!!", "http://gdurl.com/NvcO", 130));
-            App.Database.InsertAsync(new Character("SQL - 8 Arms", "Multiple arms makes it hard to attack.", "http://gdurl.com/fxM0", 180));
-            App.Database.InsertAsync(new Character("Grass Hopper", "Multiple arms makes it hard to attack.", "http://gdurl.com/c2iZ", 40));
-            App.Database.InsertAsync(new Character("Pumpkin Ghost", "Ariel attacks are deadly!!!", "http://gdurl.com/HSHv", 500));
-            App.Database.InsertAsync(new Character("Mixed Horns", "Simple creature with most defense.", "http://gdurl.com/IGNK", 100));
-            App.Database.InsertAsync(new Character("Guitar Ghost", "Attacks with sound of red guitar.", "http://gdurl.com/O6wJ", 490));
+            App.Database.InsertAsync(new Character("3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1, 100));
+            App.Database.InsertAsync(new Character("Sea Alien", "Small and quick to attack.", GameDevResources.Aliens_Char_2, 150));
+            App.Database.InsertAsync(new Character("Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3, 130));
+            App.Database.InsertAsync(new Character("8 Arms", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_4, 180));
+            App.Database.InsertAsync(new Character("Grass Hopper", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_5, 40));
+            App.Database.InsertAsync(new Character("Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6, 500));
+            App.Database.InsertAsync(new Character("Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7, 100));
+            App.Database.InsertAsync(new Character("Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8, 490));
         }
 
         private void NotifyViewModelsOfDataChange()

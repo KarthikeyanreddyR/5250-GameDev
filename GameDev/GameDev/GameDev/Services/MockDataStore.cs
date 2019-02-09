@@ -37,20 +37,20 @@ namespace GameDev.Services
         private void CreateMockItemsDataSet()
         {
             // Mock data for Items
-            _itemsDataSet.Add(new Item("Noisy Cricket", "Small, portable gun which make huge boom!!!", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10));
-            _itemsDataSet.Add(new Item("De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10));
-            _itemsDataSet.Add(new Item("Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.Feet, 10));
-            _itemsDataSet.Add(new Item("Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
+            _itemsDataSet.Add(new Item("MOCK - Noisy Cricket", "Small, portable gun which make huge boom!!!", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10));
+            _itemsDataSet.Add(new Item("MOCK - De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10));
+            _itemsDataSet.Add(new Item("MOCK - Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.Feet, 10));
+            _itemsDataSet.Add(new Item("MOCK - Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
 
             // Mock data for Characters
-            _charactersDataSet.Add(new Character("3 Eyed", "Predicts future attacks with extra eye.", "http://gdurl.com/RxRK", 100));
-            _charactersDataSet.Add(new Character("Sea Alien", "Small and quick to attack.", "http://gdurl.com/dgT5", 150));
-            _charactersDataSet.Add(new Character("Happy Alien", "Smiling can be dangerous!!", "http://gdurl.com/NvcO", 130));
-            _charactersDataSet.Add(new Character("8 Arms", "Multiple arms makes it hard to attack.", "http://gdurl.com/fxM0", 180));
-            _charactersDataSet.Add(new Character("Grass Hopper", "Multiple arms makes it hard to attack.", "http://gdurl.com/c2iZ",40));
-            _charactersDataSet.Add(new Character("Pumpkin Ghost", "Ariel attacks are deadly!!!", "http://gdurl.com/HSHv",500));
-            _charactersDataSet.Add(new Character("Mixed Horns", "Simple creature with most defense.", "http://gdurl.com/IGNK",100));
-            _charactersDataSet.Add(new Character("Guitar Ghost", "Attacks with sound of red guitar.", "http://gdurl.com/O6wJ",490));
+            _charactersDataSet.Add(new Character("MOCK - 3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1, 100));
+            _charactersDataSet.Add(new Character("MOCK - Sea Alien", "Small and quick to attack.", GameDevResources.Aliens_Char_2, 150));
+            _charactersDataSet.Add(new Character("MOCK - Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3, 130));
+            _charactersDataSet.Add(new Character("MOCK - 8 Arms", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_4, 180));
+            _charactersDataSet.Add(new Character("MOCK - Grass Hopper", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_5, 40));
+            _charactersDataSet.Add(new Character("MOCK - Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6, 500));
+            _charactersDataSet.Add(new Character("MOCK - Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7, 100));
+            _charactersDataSet.Add(new Character("MOCK - Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8, 490));
         }
 
         #region Items
