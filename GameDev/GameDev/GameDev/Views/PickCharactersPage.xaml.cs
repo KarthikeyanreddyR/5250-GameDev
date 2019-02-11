@@ -32,11 +32,21 @@ namespace GameDev.Views
                 ? "checkbox_checked_icon.png" : "checkbox_unchecked_icon.png";
 
             CharactersListView.SelectedItem = null;
+            ValidateSelectedData();
         }
 
         private void NextClicked(object sender, EventArgs e)
         {
             Console.WriteLine(_viewModel);
+        }
+
+        private void ValidateSelectedData()
+        {
+            var dataset = _viewModel.DataSet.Where(s => s.IsSelected == true).ToList();
+            if (dataset.Count > 0 && dataset.Count < 7)
+                NextButton.IsEnabled = true;
+            else
+                NextButton.IsEnabled = false;
         }
 
     }

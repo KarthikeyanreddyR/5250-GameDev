@@ -29,6 +29,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Next" Clicked="NextClicked"></Button>
+        <Button x:Name="NextButton" Text="Next" Clicked="NextClicked" IsEnabled="False"></Button>
     </StackLayout>
 </ContentPage>
