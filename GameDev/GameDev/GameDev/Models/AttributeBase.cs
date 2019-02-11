@@ -22,12 +22,6 @@ namespace GameDev.Models
         // The highest value health can go
         public int MaxHealth { get; set; }
 
-        // Helper to combine the attributes into a single line, to make it easier to display the item as a string
-        public string FormatOutput()
-        {
-            var myReturn = "Implement";
-            return myReturn.Trim();
-        }
 
         // Constructor sets defaults
         public AttributeBase()
@@ -74,12 +68,19 @@ namespace GameDev.Models
             CurrentHealth = currentHealth;
         }
 
+        // Helper to combine the attributes into a single line, to make it easier to display the item as a string
+        public string FormatOutput()
+        {
+            var myReturn = (JObject)JToken.FromObject(this);
+            return myReturn.ToString().Trim();
+        }
+
         // Return a formatted string of the AttributeBase
         public static string GetAttributeString(AttributeBase data)
         {
             var myString = (JObject)JToken.FromObject(data);
 
-            return myString.ToString();
+            return myString.ToString().Trim();
         }
 
         // Given a string of attributes, convert them to actual attributes

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GameDev.Models
+﻿namespace GameDev.Models
 {
     public class BasePlayerItemSlots<T> : Entity<T>
     {
@@ -26,24 +22,5 @@ namespace GameDev.Models
 
         // LeftFinger is a string referencing the database table
         public string LeftFinger { get; set; }
-
-        // This uses reflection, to get the property from a string
-        // Then based on the property, it gets the value which will be the string pointing to the item
-        // Then it calls to the view model who has the list of items, and asks for it
-        // then it returns the formatted string for the Item, and Value.
-        private string FormatOutputSlot(string slot)
-        {
-            var myReturn = "Implement";
-
-            return myReturn;
-        }
-
-        public string ItemSlotsFormatOutput()
-        {
-            var myReturn = "Implement";
-
-            return myReturn.Trim();
-        }
     }
-
 }

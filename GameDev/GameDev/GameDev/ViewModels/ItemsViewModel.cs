@@ -95,8 +95,6 @@ namespace GameDev.ViewModels
                 {
                     Dataset.Add(item);
                 }
-
-                SetNeedsRefresh(false);
             }
             catch (Exception ex)
             {
@@ -105,6 +103,7 @@ namespace GameDev.ViewModels
             finally
             {
                 IsBusy = false;
+                SetNeedsRefresh(false);
             }
         }
 
@@ -119,7 +118,8 @@ namespace GameDev.ViewModels
 
         #endregion Refresh
 
-        private async Task<bool> AddItem(Item newItem)
+        #region Data Operations
+        public async Task<bool> AddItem(Item newItem)
         {
             Dataset.Add(newItem);
             return await DataStore.AddAsync_Item(newItem);
@@ -139,7 +139,7 @@ namespace GameDev.ViewModels
             return await DataStore.UpdateAsync_Item(myData);
         }
 
-        private async Task<bool> DeleteItem(Item deleteItem)
+        public async Task<bool> DeleteItem(Item deleteItem)
         {
             Dataset.Remove(deleteItem);
             return await DataStore.DeleteAsync_Item(deleteItem);
@@ -148,5 +148,6 @@ namespace GameDev.ViewModels
         public async Task<Item> GetItem(string id) {
             return await DataStore.GetAsync_Item(id);
         }
+        #endregion Data Operations
     }
 }

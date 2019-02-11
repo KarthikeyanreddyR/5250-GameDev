@@ -42,7 +42,7 @@ namespace GameDev.Models
             get
             {
                 var _list = Enum.GetValues(typeof(AttributeEnum)).Cast<AttributeEnum>()
-                    .Where(e => e != AttributeEnum.MaxHealth && e!= AttributeEnum.CurrentHealth)
+                    .Where(e => e != AttributeEnum.MaxHealth && e != AttributeEnum.CurrentHealth)
                     .Select(v => v.ToString())
                     .ToList();
                 return _list;

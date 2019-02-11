@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GameDev.Models
+﻿namespace GameDev.Models
 {
     public class Item : Entity<Item>
     {
@@ -48,7 +46,7 @@ namespace GameDev.Models
 
             // Update all the fields in the Data, except for the Id and guid
             Name = newData.Name;
-            Description = newData.Description;            
+            Description = newData.Description;
             ImageURI = newData.ImageURI;
             Value = newData.Value;
             Attribute = newData.Attribute;

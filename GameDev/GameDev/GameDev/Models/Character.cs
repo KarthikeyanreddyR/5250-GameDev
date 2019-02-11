@@ -1,7 +1,5 @@
 ﻿using GameDev.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GameDev.Models
 {
@@ -69,7 +67,6 @@ namespace GameDev.Models
 
             // Populate the Attributes
             AttributeString = newData.AttributeString;
-
             Attribute = new AttributeBase(newData.AttributeString);
 
             // Set the strings for the items
@@ -120,7 +117,6 @@ namespace GameDev.Models
 
             // Populate the Attributes
             this.AttributeString = newData.AttributeString;
-
             this.Attribute = new AttributeBase(newData.AttributeString);
 
             // Set the strings for the items
@@ -131,13 +127,6 @@ namespace GameDev.Models
             this.LeftFinger = newData.LeftFinger;
             this.Feet = newData.Feet;
             return;
-        }
-
-        // Helper to combine the attributes into a single line, to make it easier to display the item as a string
-        public string FormatOutput()
-        {
-            var myReturn = " Implement";
-            return myReturn;
         }
 
         #region Basics
