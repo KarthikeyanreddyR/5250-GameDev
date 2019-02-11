@@ -46,6 +46,18 @@ namespace GameDev.Models
             }
         }
 
+        public static List<string> GetListForCharacter
+        {
+            get
+            {
+                var _list = Enum.GetValues(typeof(ItemLocationEnum)).Cast<ItemLocationEnum>()
+                    .Where(e => e != ItemLocationEnum.Finger && e != ItemLocationEnum.Unknown)
+                    .Select(v => v.ToString())
+                    .ToList();
+                return _list;
+            }
+        }
+
         public static ItemLocationEnum ConvertStringToEnum(string value)
         {
             return (ItemLocationEnum)Enum.Parse(typeof(ItemLocationEnum), value);

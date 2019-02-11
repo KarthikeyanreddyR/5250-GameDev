@@ -37,44 +37,39 @@ namespace GameDev.Services
         private void CreateMockItemsDataSet()
         {
             // Mock data for Items
-            _itemsDataSet.Add(new Item("MOCK - Noisy Cricket", "Small, portable gun which make huge boom!!!", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10));
-            _itemsDataSet.Add(new Item("MOCK - De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, 0, 10, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10));
-            _itemsDataSet.Add(new Item("MOCK - Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.Feet, 10));
-            _itemsDataSet.Add(new Item("MOCK - Shrink Ray", "Minimize damage you take from powerful attacks", null, 0, 10, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10));
+            _itemsDataSet.Add(new Item("MOCK - Noisy Cricket", "Small, portable gun which make huge boom!!!", null, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10, 10));
+            _itemsDataSet.Add(new Item("MOCK - De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10, 10));
+            _itemsDataSet.Add(new Item("MOCK - Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, AttributeEnum.Defense, ItemLocationEnum.Feet, 10, 10));
+            _itemsDataSet.Add(new Item("MOCK - Shrink Ray", "Minimize damage you take from powerful attacks", null, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10, 10));
 
             // Mock data for Characters
-            _charactersDataSet.Add(new Character("MOCK - 3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1, 100));
-            _charactersDataSet.Add(new Character("MOCK - Sea Alien", "Small and quick to attack.", GameDevResources.Aliens_Char_2, 150));
-            _charactersDataSet.Add(new Character("MOCK - Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3, 130));
-            _charactersDataSet.Add(new Character("MOCK - 8 Arms", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_4, 180));
-            _charactersDataSet.Add(new Character("MOCK - Grass Hopper", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_5, 40));
-            _charactersDataSet.Add(new Character("MOCK - Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6, 500));
-            _charactersDataSet.Add(new Character("MOCK - Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7, 100));
-            _charactersDataSet.Add(new Character("MOCK - Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8, 490));
+            _charactersDataSet.Add(new Character(
+                "3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1,
+                1, 10, true, 10, 10, 10, 20, 20,
+                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+
+            _charactersDataSet.Add(new Character(
+                "Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3,
+                1, 10, true, 10, 10, 10, 20, 20,
+                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+
+            _charactersDataSet.Add(new Character(
+                "Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6,
+                1, 10, true, 10, 10, 10, 20, 20,
+                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+
+            _charactersDataSet.Add(new Character(
+                "Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7,
+                1, 10, true, 10, 10, 10, 20, 20,
+                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+
+            _charactersDataSet.Add(new Character(
+                "Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8,
+                1, 10, true, 10, 10, 10, 20, 20,
+                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
         }
 
         #region Items
-
-        public async Task<bool> InsertUpdateAsync_Item(Item data)
-        {
-            // Check to see if the item exist
-            var oldData = await GetAsync_Item(data.Id);
-            if (oldData == null)
-            {
-                _itemsDataSet.Add(data);
-                return await Task.FromResult(true);
-            }
-
-            // Compare it, if different update in the DB
-            var UpdateResult = await UpdateAsync_Item(data);
-            if (UpdateResult)
-            {
-                await AddAsync_Item(data);
-                return await Task.FromResult(true);
-            }
-
-            return await Task.FromResult(false);
-        }
 
         public async Task<bool> AddAsync_Item(Item data)
         {
@@ -115,27 +110,6 @@ namespace GameDev.Services
         #endregion Items
 
         #region Characters
-
-        public async Task<bool> InsertUpdateAsync_Character(Character data)
-        {
-            // Check to see if the item exist
-            var oldData = await GetAsync_Character(data.Id);
-            if (oldData == null)
-            {
-                _charactersDataSet.Add(data);
-                return await Task.FromResult(true);
-            }
-
-            // Compare it, if different update in the DB
-            var UpdateResult = await UpdateAsync_Character(data);
-            if (UpdateResult)
-            {
-                await AddAsync_Character(data);
-                return await Task.FromResult(true);
-            }
-
-            return await Task.FromResult(false);
-        }
 
         public async Task<bool> AddAsync_Character(Character data)
         {

@@ -4,13 +4,20 @@
     {
         public static string DefaultImageUrl = "http://gdurl.com/P7TZ";
 
+        // Type of Item.
         public AttributeEnum Attribute { get; set; }
 
+        // Location where Items go on like Head, Hand, etc.
         public ItemLocationEnum Location { get; set; }
 
+        // Used in increasing or decreasing Value of an Item based on given Attribute.
         public int Value { get; set; }
 
-        public Item(string name, string description, string imageUri, int range, int damage, AttributeEnum attribute, ItemLocationEnum location, int value)
+        // Damge caused by Item when used
+        public int Damage { get; set; }
+
+        public Item(string name, string description, string imageUri,
+            AttributeEnum attribute, ItemLocationEnum location, int value, int damage)
         {
             CreateDefaultItem();
 
@@ -20,6 +27,7 @@
             Attribute = attribute;
             Location = location;
             Value = value;
+            Damage = damage;
         }
 
         public Item()
@@ -33,6 +41,7 @@
             Description = "Item description";
             ImageURI = Item.DefaultImageUrl;
             Value = 0;
+            Damage = 0;
             Location = ItemLocationEnum.Unknown;
             Attribute = AttributeEnum.Unknown;
         }
@@ -49,6 +58,7 @@
             Description = newData.Description;
             ImageURI = newData.ImageURI;
             Value = newData.Value;
+            Damage = newData.Damage;
             Attribute = newData.Attribute;
             Location = newData.Location;
         }

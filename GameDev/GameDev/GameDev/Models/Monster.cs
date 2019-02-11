@@ -1,4 +1,5 @@
 ﻿using GameDev.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace GameDev.Models
@@ -290,17 +291,132 @@ namespace GameDev.Models
             return myReturn;
         }
 
-        // Drop all the items the monster has
+        // Drop All Items
+        // Return a list of items for the pool of items
         public List<Item> DropAllItems()
         {
             var myReturn = new List<Item>();
 
-            // Drop all Items
-            Item myItem;
+            // Get Item Locations for Characters
+            var _locationList = ItemLocationHelper.GetListForCharacter;
 
-            // Implement
+            foreach (string loc in _locationList)
+            {
+                Enum.TryParse(loc, true, out ItemLocationEnum locEnum);
+                Item _item = RemoveItem(locEnum);
+                myReturn.Add(_item);
+            }
 
             return myReturn;
+        }
+
+        // Remove Item from a set location
+        // Does this by adding a new item of Null to the location
+        // This will return the previous item, and put null in its place
+        // Returns the item that was at the location
+        // Nulls out the location
+        public Item RemoveItem(ItemLocationEnum itemLocation)
+        {
+            return AddItem(itemLocation, null);
+        }
+
+        // Get the Item at a known string location (head, foot etc.)
+        public Item GetItem(string itemString)
+        {
+            return ItemsViewModel.Instance.GetItem(itemString).Result;
+        }
+
+        // Get the Item at a known string location (head, foot etc.)
+        public Item GetItemByLocation(ItemLocationEnum itemLocation)
+        {
+            var _itemId = "";
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    _itemId = this.Head;
+                    break;
+                case ItemLocationEnum.Necklass:
+                    _itemId = this.Necklace;
+                    break;
+                case ItemLocationEnum.PrimaryHand:
+                    _itemId = this.PrimaryHand;
+                    break;
+                case ItemLocationEnum.OffHand:
+                    _itemId = this.OffHand;
+                    break;
+                case ItemLocationEnum.RightFinger:
+                    _itemId = this.RightFinger;
+                    break;
+                case ItemLocationEnum.LeftFinger:
+                    _itemId = this.LeftFinger;
+                    break;
+                case ItemLocationEnum.Feet:
+                    _itemId = this.Feet;
+                    break;
+            }
+            return GetItem(_itemId);
+        }
+
+        // Add Item
+        // Looks up the Item
+        // Puts the Item ID as a string in the location slot
+        // If item is null, then puts null in the slot
+        // Returns the item that was in the location
+        public Item AddItem(ItemLocationEnum itemLocation, string itemId)
+        {
+            Item item = null;
+            var _prevItem = "";
+            if (itemId != null)
+                item = GetItem(itemId);
+
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    _prevItem = this.Head;
+                    this.Head = item?.Id;
+                    break;
+                case ItemLocationEnum.Necklass:
+                    _prevItem = this.Necklace;
+                    this.Necklace = item?.Id;
+                    break;
+                case ItemLocationEnum.PrimaryHand:
+                    _prevItem = this.PrimaryHand;
+                    this.PrimaryHand = item?.Id;
+                    break;
+                case ItemLocationEnum.OffHand:
+                    _prevItem = this.OffHand;
+                    this.OffHand = item?.Id;
+                    break;
+                case ItemLocationEnum.RightFinger:
+                    _prevItem = this.RightFinger;
+                    this.RightFinger = item?.Id;
+                    break;
+                case ItemLocationEnum.LeftFinger:
+                    _prevItem = this.LeftFinger;
+                    this.LeftFinger = item?.Id;
+                    break;
+                case ItemLocationEnum.Feet:
+                    _prevItem = this.Feet;
+                    this.Feet = item?.Id;
+                    break;
+            }
+            return GetItem(_prevItem);
+        }
+
+        // Walk all the Items on the Character.
+        // Add together all Items that modify the Attribute Enum Passed in
+        // Return the sum
+        public int GetItemBonus(AttributeEnum attributeEnum)
+        {
+            var res = 0;
+            foreach (string loc in ItemLocationHelper.GetListForCharacter)
+            {
+                Enum.TryParse(loc, true, out ItemLocationEnum locEnum);
+                Item item = GetItemByLocation(locEnum);
+                if (item.Attribute.Equals(attributeEnum))
+                    res += item.Value;
+            }
+            return res;
         }
 
         #endregion Items
