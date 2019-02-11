@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameDev.Views.ItemsPage">
+    <ContentPage.Content>
+        <ScrollView Padding="5, 20, 5, 0">
+           <!-- <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Items Page" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Button Text="Add" HorizontalOptions="EndAndExpand"></Button>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="10">
+                    <Image Source="bow_arrow.jpg" WidthRequest="50" HeightRequest="50"></Image>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Item Name" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <Label Text="Item Description" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="10">
+                    <Image Source="crossbow.png" WidthRequest="50" HeightRequest="50"></Image>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Item Name" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <Label Text="Item Description" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="10">
+                    <Image Source="laser_gun.png" WidthRequest="50" HeightRequest="50"></Image>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Item Name" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <Label Text="Item Description" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="10">
+                    <Image Source="sword.png" WidthRequest="50" HeightRequest="50"></Image>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Item Name" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <Label Text="Item Description" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>-->
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Item Details Page" HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label Text="[ Edit ]" HorizontalOptions="EndAndExpand" FontSize="Default"></Label>
+                    <Label Text="[ Delete ]" HorizontalOptions="End" FontSize="Default"></Label>
+                    <Label Text="[ Cancel ]" HorizontalOptions="End" FontSize="Default"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Image Source="laser_gun.png" HeightRequest="300" WidthRequest="300" HorizontalOptions="CenterAndExpand"></Image>
+                    <Label Text="Name : Item Name"></Label>
+                    <Label Text="Description : Item Description"></Label>
+                    <Label Text="Location: Primary Hand"></Label>
+                    <Label Text="Value : 30"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
