@@ -5,28 +5,29 @@ using System.Text;
 
 namespace GameDev.Models
 {
-    public class Character : BaseCharacter
+    // The Monster is the higher level concept.  This is the Character with all attirbutes defined.
+    public class Monster : BaseMonster
     {
-        public static string DefaultImageUrl = "http://gdurl.com/P7TZ";
+        // Remaining Experience Points to give
+        public int ExperienceRemaining { get; set; }
 
+        // Add in the actual attribute class
         public AttributeBase Attribute { get; set; }
 
-        public Character()
+        // Make sure Attribute is instantiated in the constructor
+        public Monster()
         {
-            CreateDefaultCharacter();
-        }
-
-        private void CreateDefaultCharacter()
-        {
-            Name = "Doug";
-            Description = "Sample description of character. It's unique properties.";
-            ImageURI = DefaultImageUrl;
+            Name = "Monster";
             Attribute = new AttributeBase();
+
             Alive = true;
+            Level = 1;
+
+            // Scale up to the level
+            // // Implement ScaleLevel(Level);
         }
 
-        // Create new Character.
-        public Character(string name, string description, string imageUri,
+        public Monster(string name, string description, string imageUri,
             int level, int xpTotal, bool alive,
             int speed, int attack, int defense, int maxHealth, int currentHealth,
             string head, string feet, string necklace, string primaryHand, string offhand, string rightFinger, string leftFinger)
@@ -39,6 +40,9 @@ namespace GameDev.Models
             ExperienceTotal = xpTotal;
             Alive = alive;
 
+            // TODO: Not sure of formula. Needed some work here
+            ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
+
             Attribute = new AttributeBase(speed, attack, defense, maxHealth, currentHealth);
             AttributeString = AttributeBase.GetAttributeString(this.Attribute);
 
@@ -49,11 +53,11 @@ namespace GameDev.Models
             OffHand = offhand;
             RightFinger = rightFinger;
             LeftFinger = leftFinger;
+
         }
 
-        // Create a new character, based on a passed in BaseCharacter
-        // Used for converting from database format to character
-        public Character(BaseCharacter newData)
+        // Passed in from creating via the Database, so use the guid passed in...
+        public Monster(BaseMonster newData)
         {
             // Base information
             Name = newData.Name;
@@ -62,6 +66,11 @@ namespace GameDev.Models
             ExperienceTotal = newData.ExperienceTotal;
             ImageURI = newData.ImageURI;
             Alive = newData.Alive;
+            Damage = newData.Damage;
+            UniqueItem = newData.UniqueItem;
+
+            // TODO: Not sure of formula. Needed some work here
+            ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
 
             // Database information
             Guid = newData.Guid;
@@ -79,48 +88,52 @@ namespace GameDev.Models
             RightFinger = newData.RightFinger;
             LeftFinger = newData.LeftFinger;
             Feet = newData.Feet;
+
         }
 
-        // Create a new character, based on existing Character
-        public Character(Character newData)
+        // For making a new one for lists etc..
+        public Monster(Monster newData)
         {
+            // Base information
             Name = newData.Name;
             Description = newData.Description;
-            ImageURI = newData.ImageURI;
-
             Level = newData.Level;
             ExperienceTotal = newData.ExperienceTotal;
+            ImageURI = newData.ImageURI;
             Alive = newData.Alive;
+            Damage = newData.Damage;
+            UniqueItem = newData.UniqueItem;
+            ExperienceRemaining = newData.ExperienceRemaining;
 
+            // Populate the Attributes
             AttributeString = newData.AttributeString;
             Attribute = new AttributeBase(newData.AttributeString);
 
+            // Set the strings for the items
             Head = newData.Head;
             Feet = newData.Feet;
             Necklace = newData.Necklace;
-            PrimaryHand = newData.PrimaryHand;
-            OffHand = newData.OffHand;
             RightFinger = newData.RightFinger;
             LeftFinger = newData.LeftFinger;
+            Feet = newData.Feet;
         }
 
-        // Update the character information
-        // Updates the attribute string
-        public void Update(Character newData)
+        // Update the values passed in
+        public void Update(Monster newData)
         {
-            if (newData == null)
-                return;
-
+            // Base information
             this.Name = newData.Name;
             this.Description = newData.Description;
             this.Level = newData.Level;
             this.ExperienceTotal = newData.ExperienceTotal;
             this.ImageURI = newData.ImageURI;
             this.Alive = newData.Alive;
+            this.Damage = newData.Damage;
+            this.UniqueItem = newData.UniqueItem;
+            this.ExperienceRemaining = newData.ExperienceRemaining;
 
             // Populate the Attributes
             this.AttributeString = newData.AttributeString;
-
             this.Attribute = new AttributeBase(newData.AttributeString);
 
             // Set the strings for the items
@@ -136,49 +149,72 @@ namespace GameDev.Models
         // Helper to combine the attributes into a single line, to make it easier to display the item as a string
         public string FormatOutput()
         {
-            var myReturn = " Implement";
+            var UniqueOutput = "Implement";
+
+            var myReturn = "Implement";
+
+            // Implement
+
+            myReturn += " , Unique Item : " + UniqueOutput;
+
             return myReturn;
         }
 
-        #region Basics
+        // Add or Replace Unique Item to Monster
+        public void AddOrReplaceUniqueItem(string itemId)
+        {
+            this.UniqueItem = itemId;
+        }
 
-        // Upgrades to a set level
+        // Update Image for Monster
+        public void UpdateMonsterImageURL(string imageUrl)
+        {
+            this.ImageURI = imageUrl;
+        }
+
+        // Update Attributes for Monster
+        public void UpdateMonsterAttributes(AttributeBase attributeBase)
+        {
+            this.Attribute = attributeBase;
+            this.AttributeString = AttributeBase.GetAttributeString(this.Attribute);
+        }
+
+        // Upgrades a monster to a set level
         public void ScaleLevel(int level)
         {
-            // Implement
-        }
+            // Level must be between 1-20
+            if (level < 1 || level > 20)
+                return;
 
-        // Level Up
-        public bool LevelUp()
-        {
-            // Implement
-            return false;
-        }
+            // Dont update if it's same level
+            if (level == this.Level)
+                return;
 
-        // Level up to a number, say Level 3
-        public int LevelUpToValue(int value)
-        {
-            // Implement
-            return Level;
-        }
+            this.Level = level;
 
-        // Add experience
-        public bool AddExperience(int newExperience)
-        {
-            // Implement
-            return false;
         }
 
         // Take Damage
-        // If the damage received is > health, then death occurs
+        // If the damage recived, is > health, then death occurs
         // Return the number of experience received for this attack 
-        // monsters give experience to characters.  Characters don't accept experience from monsters
+        // monsters give experience to characters.  Characters don't accept expereince from monsters
         public void TakeDamage(int damage)
         {
             // Implement
+            return;
+
+            // Implement   CauseDeath();
         }
 
-        #endregion Basics
+        // Calculate How much experience to return
+        // Formula is the % of Damage done up to 100%  times the current experience
+        // Needs to be called before applying damage
+        public int CalculateExperienceEarned(int damage)
+        {
+            // Implement
+            return 0;
+
+        }
 
         #region GetAttributes
         // Get Attributes
@@ -189,12 +225,6 @@ namespace GameDev.Models
             // Base Attack
             var myReturn = Attribute.Attack;
 
-            // Implement
-
-            // Attack Bonus from Level
-
-            // Get Attack bonus from Items
-
             return myReturn;
         }
 
@@ -203,12 +233,6 @@ namespace GameDev.Models
         {
             // Base value
             var myReturn = Attribute.Speed;
-
-            // Implement
-
-            // Get Bonus from Level
-
-            // Get bonus from Items
 
             return myReturn;
         }
@@ -219,12 +243,6 @@ namespace GameDev.Models
             // Base value
             var myReturn = Attribute.Defense;
 
-            // Implement
-
-            // Get Bonus from Level
-
-            // Get bonus from Items
-
             return myReturn;
         }
 
@@ -233,10 +251,6 @@ namespace GameDev.Models
         {
             // Base value
             var myReturn = Attribute.MaxHealth;
-
-            // Implement
-
-            // Get bonus from Items
 
             return myReturn;
         }
@@ -247,21 +261,15 @@ namespace GameDev.Models
             // Base value
             var myReturn = Attribute.CurrentHealth;
 
-            // Implement
-
-            // Get bonus from Items
-
             return myReturn;
         }
 
-        // Returns the Dice for the item
-        // Sword 10, is Sword Dice 10
-        public int GetDamageDice()
+        // Get the Level based damage
+        // Then add in the monster damage
+        public int GetDamage()
         {
             var myReturn = 0;
-
-            // Implement
-
+            myReturn += Damage;
 
             return myReturn;
         }
@@ -270,78 +278,28 @@ namespace GameDev.Models
         // Then add the damage for the primary hand item as a Dice Roll
         public int GetDamageRollValue()
         {
-            var myReturn = GetLevelBasedDamage();
-
-            // Implement
-
-
-            return myReturn;
+            return GetDamage();
         }
 
         #endregion GetAttributes
 
         #region Items
-        // Drop All Items
-        // Return a list of items for the pool of items
+        // Gets the unique item (if any) from this monster when it dies...
+        public Item GetUniqueItem()
+        {
+            var myReturn = ItemsViewModel.Instance.GetItem(UniqueItem).Result;
+
+            return myReturn;
+        }
+
+        // Drop all the items the monster has
         public List<Item> DropAllItems()
         {
             var myReturn = new List<Item>();
 
-            // Implement
-
             // Drop all Items
-
-            return myReturn;
-        }
-
-        // Remove Item from a set location
-        // Does this by adding a new item of Null to the location
-        // This will return the previous item, and put null in its place
-        // Returns the item that was at the location
-        // Nulls out the location
-        public Item RemoveItem(ItemLocationEnum itemlocation)
-        {
-            var myReturn = AddItem(itemlocation, null);
-
-            // Save Changes
-            return myReturn;
-        }
-
-        // Get the Item at a known string location (head, foot etc.)
-        public Item GetItem(string itemString)
-        {
-            return ItemsViewModel.Instance.GetItem(itemString).Result;
-        }
-
-        // Get the Item at a known string location (head, foot etc.)
-        public Item GetItemByLocation(ItemLocationEnum itemLocation)
-        {
-            // Implement
-
-            return null;
-        }
-
-        // Add Item
-        // Looks up the Item
-        // Puts the Item ID as a string in the location slot
-        // If item is null, then puts null in the slot
-        // Returns the item that was in the location
-        public Item AddItem(ItemLocationEnum itemlocation, string itemID)
-        {
-            Item myReturn = new Item();
-
-            // Implement
-
-            return myReturn;
-        }
-
-        // Walk all the Items on the Character.
-        // Add together all Items that modify the Attribute Enum Passed in
-        // Return the sum
-        public int GetItemBonus(AttributeEnum attributeEnum)
-        {
-            var myReturn = 0;
             Item myItem;
+
             // Implement
 
             return myReturn;

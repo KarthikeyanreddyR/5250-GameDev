@@ -144,5 +144,9 @@ namespace GameDev.ViewModels
             Dataset.Remove(deleteItem);
             return await DataStore.DeleteAsync_Item(deleteItem);
         }
+
+        public async Task<Item> GetItem(string id) {
+            return await DataStore.GetAsync_Item(id);
+        }
     }
 }
