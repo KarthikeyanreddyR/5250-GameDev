@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameDev.Views.PickCharactersPage"
+             x:Class="GameDev.Views.Battle.PickCharactersPage"
              Title="Pick Characters">
     <StackLayout Padding="5, 20, 5, 0">
         <StackLayout Padding="0, 0, 0, 5">

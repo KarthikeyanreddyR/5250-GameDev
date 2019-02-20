@@ -7,7 +7,7 @@ using GameDev.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace GameDev.Views
+namespace GameDev.Views.Battle
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PickCharactersPage : ContentPage
