@@ -1,13 +1,13 @@
 ﻿using GameDev.ViewModels;
+using SQLite;
 using System;
 using System.Collections.Generic;
 
 namespace GameDev.Models
 {
-    public class Character : BaseCharacter
+    public class Character : BasePlayer<Character>
     {
-        public static string DefaultImageUrl = "http://gdurl.com/P7TZ";
-
+        [Ignore]
         public AttributeBase Attribute { get; set; }
 
         public Character()
@@ -15,11 +15,20 @@ namespace GameDev.Models
             CreateDefaultCharacter();
         }
 
+        // Create new Character.
+        public Character(string name, string description, string imageUri)
+        {
+            CreateDefaultCharacter();
+            Name = name;
+            Description = description;
+            ImageURI = imageUri;
+        }
+
         private void CreateDefaultCharacter()
         {
             Name = "Doug";
             Description = "Sample description of character. It's unique properties.";
-            ImageURI = DefaultImageUrl;
+            ImageURI = GameDevResources.DefaultImageUrl;
             Level = 1;
             ExperienceTotal = 0;
             Alive = true;
@@ -36,43 +45,34 @@ namespace GameDev.Models
             LeftFinger = null;
         }
 
-        // Create new Character.
-        public Character(string name, string description, string imageUri)
-        {
-            CreateDefaultCharacter();
-            Name = name;
-            Description = description;
-            ImageURI = imageUri;
-        }
-
         // Create a new character, based on a passed in BaseCharacter
         // Used for converting from database format to character
-        public Character(BaseCharacter newData)
-        {
-            // Base information
-            Name = newData.Name;
-            Description = newData.Description;
-            Level = newData.Level;
-            ExperienceTotal = newData.ExperienceTotal;
-            ImageURI = newData.ImageURI;
-            Alive = newData.Alive;
+        //public Character(BaseCharacter newData)
+        //{
+        //    // Base information
+        //    Name = newData.Name;
+        //    Description = newData.Description;
+        //    Level = newData.Level;
+        //    ExperienceTotal = newData.ExperienceTotal;
+        //    ImageURI = newData.ImageURI;
+        //    Alive = newData.Alive;
 
-            // Database information
-            Guid = newData.Guid;
-            Id = newData.Id;
+        //    // Database information
+        //    Guid = newData.Guid;
+        //    Id = newData.Id;
 
-            // Populate the Attributes
-            AttributeString = newData.AttributeString;
-            Attribute = new AttributeBase(newData.AttributeString);
+        //    // Populate the Attributes
+        //    AttributeString = newData.AttributeString;
+        //    Attribute = new AttributeBase(newData.AttributeString);
 
-            // Set the strings for the items
-            Head = newData.Head;
-            Feet = newData.Feet;
-            Necklace = newData.Necklace;
-            RightFinger = newData.RightFinger;
-            LeftFinger = newData.LeftFinger;
-            Feet = newData.Feet;
-        }
+        //    // Set the strings for the items
+        //    Head = newData.Head;
+        //    Feet = newData.Feet;
+        //    Necklace = newData.Necklace;
+        //    RightFinger = newData.RightFinger;
+        //    LeftFinger = newData.LeftFinger;
+        //    Feet = newData.Feet;
+        //}
 
         // Create a new character, based on existing Character
         public Character(Character newData)

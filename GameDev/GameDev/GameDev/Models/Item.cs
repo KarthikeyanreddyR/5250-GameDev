@@ -2,8 +2,6 @@
 {
     public class Item : Entity<Item>
     {
-        public static string DefaultImageUrl = "http://gdurl.com/P7TZ";
-
         // Type of Item.
         public AttributeEnum Attribute { get; set; }
 
@@ -39,7 +37,7 @@
         {
             Name = "Item Name";
             Description = "Item description";
-            ImageURI = Item.DefaultImageUrl;
+            ImageURI = GameDevResources.DefaultImageUrl;
             Value = 0;
             Damage = 0;
             Location = ItemLocationEnum.Unknown;

@@ -1,16 +1,24 @@
 ﻿using GameDev.ViewModels;
+using SQLite;
 using System;
 using System.Collections.Generic;
 
 namespace GameDev.Models
 {
     // The Monster is the higher level concept.  This is the Character with all attirbutes defined.
-    public class Monster : BaseMonster
+    public class Monster : BasePlayer<Monster>
     {
+        // Unique Item for Monster
+        public string UniqueItem { get; set; }
+
+        // Damage the Monster can do.
+        public int Damage { get; set; }
+
         // Remaining Experience Points to give
         public int ExperienceRemaining { get; set; }
 
         // Add in the actual attribute class
+        [Ignore]
         public AttributeBase Attribute { get; set; }
 
         // Make sure Attribute is instantiated in the constructor
@@ -19,11 +27,22 @@ namespace GameDev.Models
             CreateDefaultMonster();
         }
 
+        public Monster(string name, string description, string imageUri)
+        {
+            CreateDefaultMonster();
+            Name = name;
+            Description = description;
+            ImageURI = imageUri;
+
+            // TODO: Not sure of formula. Needed some work here
+            ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
+        }
+
         private void CreateDefaultMonster()
         {
             Name = "Monster";
             Description = "Sample description of monster.";
-            ImageURI = Character.DefaultImageUrl;
+            ImageURI = GameDevResources.DefaultImageUrl;
 
             Attribute = new AttributeBase();
             AttributeString = AttributeBase.GetAttributeString(Attribute);
@@ -44,51 +63,40 @@ namespace GameDev.Models
             LeftFinger = null;
         }
 
-        public Monster(string name, string description, string imageUri)
-        {
-            CreateDefaultMonster();
-            Name = name;
-            Description = description;
-            ImageURI = imageUri;
-
-            // TODO: Not sure of formula. Needed some work here
-            ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
-        }
-
         // Passed in from creating via the Database, so use the guid passed in...
-        public Monster(BaseMonster newData)
-        {
-            // Base information
-            Name = newData.Name;
-            Description = newData.Description;
-            Level = newData.Level;
-            ExperienceTotal = newData.ExperienceTotal;
-            ImageURI = newData.ImageURI;
-            Alive = newData.Alive;
-            Damage = newData.Damage;
-            UniqueItem = newData.UniqueItem;
+        //public Monster(BaseMonster newData)
+        //{
+        //    // Base information
+        //    Name = newData.Name;
+        //    Description = newData.Description;
+        //    Level = newData.Level;
+        //    ExperienceTotal = newData.ExperienceTotal;
+        //    ImageURI = newData.ImageURI;
+        //    Alive = newData.Alive;
+        //    Damage = newData.Damage;
+        //    UniqueItem = newData.UniqueItem;
 
-            // TODO: Not sure of formula. Needed some work here
-            ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
+        //    // TODO: Not sure of formula. Needed some work here
+        //    ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
 
-            // Database information
-            Guid = newData.Guid;
-            Id = newData.Id;
+        //    // Database information
+        //    Guid = newData.Guid;
+        //    Id = newData.Id;
 
-            // Populate the Attributes
-            AttributeString = newData.AttributeString;
+        //    // Populate the Attributes
+        //    AttributeString = newData.AttributeString;
 
-            Attribute = new AttributeBase(newData.AttributeString);
+        //    Attribute = new AttributeBase(newData.AttributeString);
 
-            // Set the strings for the items
-            Head = newData.Head;
-            Feet = newData.Feet;
-            Necklace = newData.Necklace;
-            RightFinger = newData.RightFinger;
-            LeftFinger = newData.LeftFinger;
-            Feet = newData.Feet;
+        //    // Set the strings for the items
+        //    Head = newData.Head;
+        //    Feet = newData.Feet;
+        //    Necklace = newData.Necklace;
+        //    RightFinger = newData.RightFinger;
+        //    LeftFinger = newData.LeftFinger;
+        //    Feet = newData.Feet;
 
-        }
+        //}
 
         // For making a new one for lists etc..
         public Monster(Monster newData)
