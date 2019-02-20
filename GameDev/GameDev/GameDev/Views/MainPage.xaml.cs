@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -10,8 +7,8 @@ using Xamarin.Forms.Xaml;
 using GameDev.Models;
 using GameDev.Views.Characters;
 using GameDev.Views.Monsters;
-using GameDev.Views.Items;
 using GameDev.Views.Score;
+using GameDev.Views.Items;
 
 namespace GameDev.Views
 {
