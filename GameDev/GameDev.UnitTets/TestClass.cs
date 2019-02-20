@@ -11,15 +11,15 @@ namespace GameDev.UnitTets
     [TestFixture]
     public class TestClass
     {
-        [Test]
-        public void TestMethod()
-        {
-            var character = new Character();
+        //[Test]
+        //public void TestMethod()
+        //{
+        //    var character = new Character();
 
-            var expected = 20;
-            var actual = character.Age;
+        //    var expected = 20;
+        //    var actual = character.Age;
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
