@@ -73,45 +73,45 @@ namespace GameDev.Services
             App.Database.InsertAsync(new Item("Shrink Ray", "Minimize damage you take from powerful attacks", null, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10, 10));
 
             // Mock data for Characters
-            App.Database.InsertAsync(new Character(
-                "3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                 "Sea Alien", "Small and quick to attack.", GameDevResources.Aliens_Char_2,
-                 1, 10, true, 10, 10, 10, 20, 20,
-                 "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //     "Sea Alien", "Small and quick to attack.", GameDevResources.Aliens_Char_2,
+            //     1, 10, true, 10, 10, 10, 20, 20,
+            //     "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                "Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                "8 Arms", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_4,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "8 Arms", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_4,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                "Grass Hopper", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_5,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "Grass Hopper", "Multiple arms makes it hard to attack.", GameDevResources.Aliens_Char_5,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                "Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                "Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
 
-            App.Database.InsertAsync(new Character(
-                "Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            //App.Database.InsertAsync(new Character(
+            //    "Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8,
+            //    1, 10, true, 10, 10, 10, 20, 20,
+            //    "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
         }
 
         private void NotifyViewModelsOfDataChange()

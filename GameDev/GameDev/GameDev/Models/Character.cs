@@ -20,34 +20,29 @@ namespace GameDev.Models
             Name = "Doug";
             Description = "Sample description of character. It's unique properties.";
             ImageURI = DefaultImageUrl;
-            Attribute = new AttributeBase();
+            Level = 1;
+            ExperienceTotal = 0;
             Alive = true;
+
+            Attribute = new AttributeBase();
+            AttributeString = AttributeBase.GetAttributeString(Attribute);
+
+            Head = null;
+            Feet = null;
+            Necklace = null;
+            PrimaryHand = null;
+            OffHand = null;
+            RightFinger = null;
+            LeftFinger = null;
         }
 
         // Create new Character.
-        public Character(string name, string description, string imageUri,
-            int level, int xpTotal, bool alive,
-            int speed, int attack, int defense, int maxHealth, int currentHealth,
-            string head, string feet, string necklace, string primaryHand, string offhand, string rightFinger, string leftFinger)
+        public Character(string name, string description, string imageUri)
         {
+            CreateDefaultCharacter();
             Name = name;
             Description = description;
             ImageURI = imageUri;
-
-            Level = level;
-            ExperienceTotal = xpTotal;
-            Alive = alive;
-
-            Attribute = new AttributeBase(speed, attack, defense, maxHealth, currentHealth);
-            AttributeString = AttributeBase.GetAttributeString(this.Attribute);
-
-            Head = head;
-            Feet = feet;
-            Necklace = necklace;
-            PrimaryHand = primaryHand;
-            OffHand = offhand;
-            RightFinger = rightFinger;
-            LeftFinger = leftFinger;
         }
 
         // Create a new character, based on a passed in BaseCharacter

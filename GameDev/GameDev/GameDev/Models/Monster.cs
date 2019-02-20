@@ -16,43 +16,43 @@ namespace GameDev.Models
         // Make sure Attribute is instantiated in the constructor
         public Monster()
         {
+            CreateDefaultMonster();
+        }
+
+        private void CreateDefaultMonster()
+        {
             Name = "Monster";
+            Description = "Sample description of monster.";
+            ImageURI = Character.DefaultImageUrl;
+
             Attribute = new AttributeBase();
+            AttributeString = AttributeBase.GetAttributeString(Attribute);
 
             Alive = true;
             Level = 1;
+            ExperienceTotal = 0;
+            ExperienceRemaining = 0;
+            Damage = 0;
+            UniqueItem = null;
 
-            // Scale up to the level
-            // // Implement ScaleLevel(Level);
+            Head = null;
+            Feet = null;
+            Necklace = null;
+            PrimaryHand = null;
+            OffHand = null;
+            RightFinger = null;
+            LeftFinger = null;
         }
 
-        public Monster(string name, string description, string imageUri,
-            int level, int xpTotal, bool alive,
-            int speed, int attack, int defense, int maxHealth, int currentHealth,
-            string head, string feet, string necklace, string primaryHand, string offhand, string rightFinger, string leftFinger)
+        public Monster(string name, string description, string imageUri)
         {
+            CreateDefaultMonster();
             Name = name;
             Description = description;
             ImageURI = imageUri;
 
-            Level = level;
-            ExperienceTotal = xpTotal;
-            Alive = alive;
-
             // TODO: Not sure of formula. Needed some work here
             ExperienceRemaining = ExperienceTotal - CalculateExperienceEarned(Damage);
-
-            Attribute = new AttributeBase(speed, attack, defense, maxHealth, currentHealth);
-            AttributeString = AttributeBase.GetAttributeString(this.Attribute);
-
-            Head = head;
-            Feet = feet;
-            Necklace = necklace;
-            PrimaryHand = primaryHand;
-            OffHand = offhand;
-            RightFinger = rightFinger;
-            LeftFinger = leftFinger;
-
         }
 
         // Passed in from creating via the Database, so use the guid passed in...

@@ -28,6 +28,7 @@ namespace GameDev.Services
 
         private List<Item> _itemsDataSet = new List<Item>();
         private List<Character> _charactersDataSet = new List<Character>();
+        private List<Monster> _monstersDataSet = new List<Monster>();
 
         public MockDataStore()
         {
@@ -37,36 +38,50 @@ namespace GameDev.Services
         private void CreateMockItemsDataSet()
         {
             // Mock data for Items
-            _itemsDataSet.Add(new Item("MOCK - Noisy Cricket", "Small, portable gun which make huge boom!!!", null, AttributeEnum.Attack, ItemLocationEnum.OffHand, 10, 10));
-            _itemsDataSet.Add(new Item("MOCK - De-Atomizer", "Heavy machinery which can reduce opponents to atoms.", null, AttributeEnum.Attack, ItemLocationEnum.PrimaryHand, 10, 10));
-            _itemsDataSet.Add(new Item("MOCK - Anti-Gravity Shoes", "Defy gravity and take your fight in air", null, AttributeEnum.Defense, ItemLocationEnum.Feet, 10, 10));
-            _itemsDataSet.Add(new Item("MOCK - Shrink Ray", "Minimize damage you take from powerful attacks", null, AttributeEnum.Defense, ItemLocationEnum.RightFinger, 10, 10));
+            _itemsDataSet.Add(new Item("Antidote", "desc", GameDevResources.item_1, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("BB Gun", "desc", GameDevResources.item_2, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Clone Gun", "desc", GameDevResources.item_3, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Coil Gun", "desc", GameDevResources.item_4, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Death Ray", "desc", GameDevResources.item_5, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Elixir of Life", "desc", GameDevResources.item_6, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Gun", "desc", GameDevResources.item_7, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Healt Potion", "desc", GameDevResources.item_8, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Ice Skates", "desc", GameDevResources.item_9, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("King Crown", "desc", GameDevResources.item_10, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Machine Gun", "desc", GameDevResources.item_11, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Poison", "desc", GameDevResources.item_12, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Potion", "desc", GameDevResources.item_13, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Pretty Crown", "desc", GameDevResources.item_14, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Ray Gun", "desc", GameDevResources.item_15, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Rocket Boots", "desc", GameDevResources.item_16, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Rocket Luncher", "desc", GameDevResources.item_17, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Roller Ski", "desc", GameDevResources.item_18, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Shotgun", "desc", GameDevResources.item_19, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
+            _itemsDataSet.Add(new Item("Sniper Rifle", "desc", GameDevResources.item_20, AttributeEnum.Unknown, ItemLocationEnum.Unknown, 0, 0));
 
             // Mock data for Characters
-            _charactersDataSet.Add(new Character(
-                "3 Eyed", "Predicts future attacks with extra eye.", GameDevResources.Aliens_Char_1,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            _charactersDataSet.Add(new Character("Airman", "desc", GameDevResources.char_1));
+            _charactersDataSet.Add(new Character("Captain", "desc", GameDevResources.char_2));
+            _charactersDataSet.Add(new Character("Colonel", "desc", GameDevResources.char_3));
+            _charactersDataSet.Add(new Character("Combat medic", "desc", GameDevResources.char_4));
+            _charactersDataSet.Add(new Character("Corporal", "desc", GameDevResources.char_5));
+            _charactersDataSet.Add(new Character("Drill Sergeant", "desc", GameDevResources.char_6));
+            _charactersDataSet.Add(new Character("General", "desc", GameDevResources.char_7));
+            _charactersDataSet.Add(new Character("Paratrooper", "desc", GameDevResources.char_8));
+            _charactersDataSet.Add(new Character("Park Rnager", "desc", GameDevResources.char_9));
+            _charactersDataSet.Add(new Character("Soldier", "desc", GameDevResources.char_10));
 
-            _charactersDataSet.Add(new Character(
-                "Happy Alien", "Smiling can be dangerous!!", GameDevResources.Aliens_Char_3,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
-
-            _charactersDataSet.Add(new Character(
-                "Pumpkin Ghost", "Ariel attacks are deadly!!!", GameDevResources.Aliens_Char_6,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
-
-            _charactersDataSet.Add(new Character(
-                "Mixed Horns", "Simple creature with most defense.", GameDevResources.Aliens_Char_7,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
-
-            _charactersDataSet.Add(new Character(
-                "Guitar Ghost", "Attacks with sound of red guitar.", GameDevResources.Aliens_Char_8,
-                1, 10, true, 10, 10, 10, 20, 20,
-                "head", "feet", "necklace", "primaryHand", "offHand", "rightFinger", "leftFinger"));
+            // Mock data for Monsters
+            _monstersDataSet.Add(new Monster("Ghoul", "desc", GameDevResources.mons_1));
+            _monstersDataSet.Add(new Monster("Green Dragon", "desc", GameDevResources.mons_2));
+            _monstersDataSet.Add(new Monster("Stone Dragon", "desc", GameDevResources.mons_3));
+            _monstersDataSet.Add(new Monster("Hell Demon - Male", "desc", GameDevResources.mons_4));
+            _monstersDataSet.Add(new Monster("Hell Demon - Female", "desc", GameDevResources.mons_5));
+            _monstersDataSet.Add(new Monster("Hydra", "desc", GameDevResources.mons_6));
+            _monstersDataSet.Add(new Monster("Medusa", "desc", GameDevResources.mons_7));
+            _monstersDataSet.Add(new Monster("Sea Demon", "desc", GameDevResources.mons_8));
+            _monstersDataSet.Add(new Monster("Sea Lion", "desc", GameDevResources.mons_9));
+            _monstersDataSet.Add(new Monster("Yama", "desc", GameDevResources.mons_10));
         }
 
         #region Items
