@@ -29,7 +29,7 @@ namespace GameDev.Views.Characters
             // If the image in teh data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
             {
-                this.Data.ImageURI = Character.DefaultImageUrl;
+                this.Data.ImageURI = GameDevResources.DefaultImageUrl;
             }
             MessagingCenter.Send(this, "AddCharacter", this.Data);
             await Navigation.PopAsync();

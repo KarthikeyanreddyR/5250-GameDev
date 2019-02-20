@@ -40,7 +40,7 @@ namespace GameDev.Views.Items
             // If the image in teh data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
             {
-                this.Data.ImageURI = Item.DefaultImageUrl;
+                this.Data.ImageURI = GameDevResources.DefaultImageUrl;
             }
 
             MessagingCenter.Send(this, "EditItem", this.Data);
