@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameDev.Models;
 using GameDev.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,10 +15,13 @@ namespace GameDev.Views.Battle
     {
         private PickCharactersViewModel _viewModel;
 
-        public PickCharactersPage()
+        private BattleEngine _battleEngine;
+
+        public PickCharactersPage(BattleEngine battleEngine)
         {
             InitializeComponent();
             BindingContext = _viewModel = PickCharactersViewModel.Instance;
+            _battleEngine = battleEngine;
             if (_viewModel.DataSet.Count == 0)
                 _viewModel.LoadCommand.Execute(null);
         }
@@ -35,9 +39,18 @@ namespace GameDev.Views.Battle
             ValidateSelectedData();
         }
 
-        private void NextClicked(object sender, EventArgs e)
+        private async void NextClicked(object sender, EventArgs e)
         {
-            Console.WriteLine(_viewModel);
+            var _list = new List<Character>();
+            var dataset = _viewModel.DataSet.Where(s => s.IsSelected == true).ToList();
+            foreach(MultiSelectData i in dataset)
+            {
+                _list.Add(i.Data);
+            }
+
+            _battleEngine.CharacterList = _list;
+
+            await Navigation.PushAsync(new PickMonstersPage(_battleEngine));
         }
 
         private void ValidateSelectedData()
