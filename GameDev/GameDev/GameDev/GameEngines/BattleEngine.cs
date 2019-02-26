@@ -1,8 +1,9 @@
-﻿using System;
+﻿using GameDev.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GameDev.Models
+namespace GameDev.GameEngines
 {
     public class BattleEngine
     {

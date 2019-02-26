@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using GameDev.GameEngines;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,7 +24,7 @@ namespace GameDev.Views
 
         private async void OnBattleClicked(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new PickCharactersPage(new Models.BattleEngine()));
+            await Navigation.PushModalAsync(new PickCharactersPage(new BattleEngine()));
         }
     }
 }

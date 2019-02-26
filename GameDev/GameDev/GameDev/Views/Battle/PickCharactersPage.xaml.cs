@@ -7,6 +7,7 @@ using GameDev.Models;
 using GameDev.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GameDev.GameEngines;
 
 namespace GameDev.Views.Battle
 {
