@@ -47,6 +47,11 @@ namespace GameDev.Models
 
         }
 
+        public Score(Score newData)
+        {
+
+        }
+
         // Update the score based on the passed in values.
         public void Update(Score newData)
         {
