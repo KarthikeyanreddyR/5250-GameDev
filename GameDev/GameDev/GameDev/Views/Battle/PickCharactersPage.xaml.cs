@@ -16,13 +16,13 @@ namespace GameDev.Views.Battle
     {
         private PickCharactersViewModel _viewModel;
 
-        private BattleEngine _battleEngine;
+        public BattleViewModel BattleViewModel;
 
-        public PickCharactersPage(BattleEngine battleEngine)
+        public PickCharactersPage()
         {
             InitializeComponent();
             BindingContext = _viewModel = PickCharactersViewModel.Instance;
-            _battleEngine = battleEngine;
+            BattleViewModel = BattleViewModel.Instance;
             if (_viewModel.DataSet.Count == 0)
                 _viewModel.LoadCommand.Execute(null);
         }
@@ -42,22 +42,22 @@ namespace GameDev.Views.Battle
 
         private async void NextClicked(object sender, EventArgs e)
         {
-            var _list = new List<Character>();
-            var dataset = _viewModel.DataSet.Where(s => s.IsSelected == true).ToList();
-            foreach(MultiSelectData i in dataset)
-            {
-                _list.Add(i.Data);
-            }
+            // Add selected characters to battle
+            BattleViewModel.BattleEngine.CharacterList.AddRange(_viewModel.GetSelectedCharacters());
 
-            _battleEngine.CharacterList = _list;
+            // Start Battle
+            BattleViewModel.BattleEngine.StartBattle(false);
 
-            await Navigation.PushAsync(new PickMonstersPage(_battleEngine));
+            // Start Round
+            BattleViewModel.BattleEngine.StartRound();
+
+            await Navigation.PushAsync(new ViewMonstersPage(BattleViewModel));
         }
 
         private void ValidateSelectedData()
         {
             var dataset = _viewModel.DataSet.Where(s => s.IsSelected == true).ToList();
-            if (dataset.Count > 0 && dataset.Count < 7)
+            if (dataset.Count > 0 && dataset.Count <= GameGlobals.MaximumPartyMembers)
                 NextButton.IsEnabled = true;
             else
                 NextButton.IsEnabled = false;

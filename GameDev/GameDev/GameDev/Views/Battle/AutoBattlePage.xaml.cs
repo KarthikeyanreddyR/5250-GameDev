@@ -1,5 +1,4 @@
-﻿using GameDev.GameEngines;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace GameDev.Views.Battle
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PickMonstersPage : ContentPage
+	public partial class AutoBattlePage : ContentPage
 	{
-		public PickMonstersPage (BattleEngine battleEngine)
+		public AutoBattlePage ()
 		{
 			InitializeComponent ();
 		}

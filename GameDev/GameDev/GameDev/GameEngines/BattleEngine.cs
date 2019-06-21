@@ -14,22 +14,42 @@ namespace GameDev.GameEngines
 
         public bool IsBattleRunning { get; set; } = false;
 
+        public Boolean AutoBattle { get; set; }
+
         public BattleEngine() : base()
+        {
+            InitializeBattle();
+        }
+
+        private void InitializeBattle()
         {
             BattleScore = new Score();
             CharacterList = new List<Character>();
         }
 
-        public void StartBattle()
+        public void StartBattle(bool isAutoBattle)
         {
+            if(IsBattleRunning)
+            {
+                return;
+            }
+            if(CharacterList.Count < 1)
+            {
+                return;
+            }
+            AutoBattle = isAutoBattle;
             IsBattleRunning = true;
-            StartRound();
+        }
+
+        public void EndBattle()
+        {
             IsBattleRunning = false;
+
         }
 
         public Score GetFinalScore()
         {
-            return new Score(BattleScore);
+            return BattleScore;
         }
 
         //// Game Over Condition check

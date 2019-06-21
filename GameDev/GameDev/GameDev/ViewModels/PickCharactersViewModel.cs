@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameDev.Models;
@@ -75,15 +76,13 @@ namespace GameDev.ViewModels
 
         public Command LoadCommand { get; set; }
 
-        private bool _needsRefresh;
-
         public PickCharactersViewModel()
         {
             DataSet = new ObservableCollection<MultiSelectData>();
-            LoadCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadCommand = new Command(async () => await ExecuteLoadCharactersCommand());
         }
 
-        async Task ExecuteLoadItemsCommand()
+        async Task ExecuteLoadCharactersCommand()
         {
             if (IsBusy)
                 return;
@@ -98,7 +97,6 @@ namespace GameDev.ViewModels
                 {
                     DataSet.Add(new MultiSelectData(character, false));
                 }
-                //SetNeedsRefresh(false);
             }
             catch (Exception ex)
             {
@@ -108,6 +106,18 @@ namespace GameDev.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        public List<Character> GetSelectedCharacters()
+        {
+            var _list = new List<Character>();
+            var dataset = DataSet.Where(s => s.IsSelected == true).ToList();
+            foreach (MultiSelectData i in dataset)
+            {
+                _list.Add(i.Data);
+            }
+
+            return _list;
         }
     }
 }

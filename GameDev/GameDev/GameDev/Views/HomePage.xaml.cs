@@ -20,11 +20,12 @@ namespace GameDev.Views
 
         private async void OnAutoBattleClicked(object sender, EventArgs args)
         {
+            await Navigation.PushModalAsync(new AutoBattlePage());
         }
 
         private async void OnBattleClicked(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new PickCharactersPage(new BattleEngine()));
+            await Navigation.PushModalAsync(new PickCharactersPage());
         }
     }
 }

@@ -9,8 +9,8 @@
         </Grid.RowDefinitions>
         <AbsoluteLayout Grid.Row="0" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
             <StackLayout Orientation="Vertical" Spacing="10">
+                <Label Text="Scribblenauts : Military vs Aliens" FontSize="Medium" FontAttributes="Bold"></Label>
                 <Label Text="Karthikeyan Reddy Rokkam" FontSize="Medium" FontAttributes="Bold"></Label>
-                <Label Text="Assignment Week 4" FontSize="Medium" FontAttributes="Bold"></Label>
                 <Label x:Name="DateTimeLabel" FontSize="Medium" FontAttributes="Bold"></Label>
             </StackLayout>
         </AbsoluteLayout>
@@ -19,10 +19,10 @@
                 <Label Text="Configuration" FontSize="Medium" FontAttributes="Bold" TextDecorations="Underline"></Label>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Use MockDataStore"></Label>
-                    <Switch x:Name="SettingDataSource" HorizontalOptions="EndAndExpand" Toggled="Switch_OnToggled"/>
+                    <Switch x:Name="SettingDataSource" HorizontalOptions="EndAndExpand" Toggled="ToggleDatastoreSwitch_OnToggled"/>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Clear DataStore" VerticalOptions="CenterAndExpand"></Label>
+                <StackLayout Orientation="Horizontal" x:Name="ClearSqlName" IsVisible="False">
+                    <Label Text="Clear SQL DataStore" VerticalOptions="CenterAndExpand"></Label>
                     <Button Text="Clear" Clicked="ClearDatabase_Command" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
             </StackLayout>

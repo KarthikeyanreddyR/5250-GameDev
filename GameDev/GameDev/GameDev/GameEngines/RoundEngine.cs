@@ -14,6 +14,11 @@ namespace GameDev.GameEngines
 
         public RoundEngine() : base()
         {
+            InitializeRound();
+        }
+
+        private void InitializeRound()
+        {
             MonsterList = new List<Monster>();
             ItemPool = new List<Item>();
         }

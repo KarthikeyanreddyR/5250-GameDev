@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameDev.Services;
+using System;
 using System.Windows.Input;
 
 using Xamarin.Forms;
@@ -27,6 +28,18 @@ namespace GameDev.ViewModels
 
         public AboutViewModel()
         {
+        }
+
+        public void SetDataSource(bool isMock)
+        {
+            var set = DataStoreEnum.SQL;
+
+            if (isMock)
+            {
+                set = DataStoreEnum.Mock;
+            }
+
+            MasterDataStore.ToggleDataStore(set);
         }
     }
 }

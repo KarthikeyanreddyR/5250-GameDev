@@ -184,5 +184,65 @@ namespace GameDev.Services
         }
 
         #endregion Characters
+
+        #region Monsters
+
+        public Task<bool> AddAsync_Monster(Monster data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateAsync_Monster(Monster data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync_Monster(Monster data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Monster> GetAsync_Monster(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion Monsters
+
+        #region Score
+
+        public Task<bool> AddAsync_Score(Score data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateAsync_Score(Score data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync_Score(Score data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Score> GetAsync_Score(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion Score
+
+
     }
 }

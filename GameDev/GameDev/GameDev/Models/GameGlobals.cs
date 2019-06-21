@@ -41,5 +41,7 @@
         // Debug Settings
         public static bool EnableCriticalMissProblems = true;
         public static bool EnableCriticalHitDamage = true;
+
+        public static int MaximumPartyMembers = 6;
     }
 }
